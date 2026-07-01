@@ -1,7 +1,7 @@
 /* amtec DIN 13 Gewinderechner — Service Worker
    App-Shell wird beim Install gecacht; danach läuft der Rechner offline.
    Bei Änderungen CACHE-Version hochzählen (din13-v2, …). */
-const CACHE = 'din13-v1';
+const CACHE = 'din13-v2';
 const ASSETS = [
   './',
   './index.html',
