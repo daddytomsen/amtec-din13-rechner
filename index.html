@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>DIN 13 Gewindeberechnung — amtec · Spannhydraulik GmbH</title>
 <meta name="description" content="Metrische Gewindeberechnung nach DIN 13 — amtec Spannhydraulik">
-<meta name="theme-color" content="#eceef2">
+<meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -13,1169 +13,277 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/icon-180.png">
 <link rel="icon" type="image/png" href="icons/icon-192.png">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:           #0d0d0f;
-  --bg2:          #111114;
-  --bg3:          #16161a;
-  --bg4:          #1c1c21;
-  --bg5:          #222228;
-  --surface:      #18181d;
-  --surface2:     #1e1e24;
-  --border:       rgba(255,255,255,.07);
-  --border2:      rgba(255,255,255,.11);
-  --border3:      rgba(255,255,255,.15);
-  --text:         #f0f0f5;
-  --text2:        #a0a0b0;
-  --text3:        #6a6a7a;
-  --text4:        #454555;
-  --accent:       #a01517;
-  --accent2:      #c41a1c;
-  --accent-glow:  rgba(160,21,23,.25);
-  --teal:         #4fa3a5;
-  --teal-dim:     rgba(79,163,165,.15);
-  --mono:         'DM Mono', monospace;
-  --sans:         'DM Sans', sans-serif;
-  --row-bg:       #111114;
-  --row-alt:      #131317;
-  --row-hover:    #1a1a20;
-  --thead-bg:     rgba(13,13,15,.95);
-  --glass-bg:     rgba(18,18,22,.72);
-  --glass-border: rgba(255,255,255,.08);
-  --shadow-lg:    0 20px 60px rgba(0,0,0,.7);
-  --shadow-md:    0 8px 24px rgba(0,0,0,.4);
-  --shadow-sm:    0 2px 8px rgba(0,0,0,.3);
-  --input-bg:     rgba(255,255,255,.04);
-  --radius:       8px;
-  --radius-lg:    12px;
-  --radius-xl:    16px;
-  --ok:           #3a8c4a;
-  --ok-dim:       rgba(58,140,74,.18);
-  --warn:         #b07a10;
-  --warn-dim:     rgba(176,122,16,.18);
-  --err:          #c04040;
-  --err-dim:      rgba(192,64,64,.18);
+/* ═══ Farben und Schriften: amtec-Linie vom 10.11.2026, hell ist Standard ═══ */
+:root{
+  --bg:#f4f4f6; --flaeche:#ffffff; --flaeche2:#ebebef;
+  --rand:#dadae0; --rand-stark:#bcbcc4;
+  --text:#0d0d0f; --text2:#3a3a42; --text3:#6a6a76; --text4:#a0a0a8;
+  --rot:#a01517; --rot-hell:#f7dada; --rot-tief:#7d1012; --rot-text:#a01517;
+  --teal:#1f6a6c; --teal-hell:#e5f0f0; --teal-mitte:#4fa3a5;
+  --bern:#8a5a00; --bern-hell:#fbf0d4; --bern-rand:#e6cf94;
+  --schatten:0 8px 28px rgba(13,13,15,.14);
+  --sans:'DM Sans',system-ui,sans-serif; --mono:'DM Mono',ui-monospace,monospace;
 }
-body.light {
-  --bg:#faf9f7;--bg2:#f3f1ee;--bg3:#ece9e4;--bg4:#e4e1db;--bg5:#d8d4cd;
-  --surface:#ffffff;--surface2:#f8f6f3;--border:rgba(0,0,0,.08);--border2:rgba(0,0,0,.12);
-  --border3:rgba(0,0,0,.18);--text:#1a1916;--text2:#4a4840;--text3:#7a7870;--text4:#a0a098;
-  --accent:#a01517;--accent2:#c41a1c;--accent-glow:rgba(160,21,23,.12);
-  --teal:#2d8688;--teal-dim:rgba(45,134,136,.12);--row-bg:#faf9f7;--row-alt:#f5f3f0;
-  --row-hover:#ede9e3;--thead-bg:rgba(250,249,247,.97);--glass-bg:rgba(255,255,255,.82);
-  --glass-border:rgba(0,0,0,.1);--shadow-lg:0 20px 60px rgba(0,0,0,.15);
-  --shadow-md:0 8px 24px rgba(0,0,0,.1);--shadow-sm:0 2px 8px rgba(0,0,0,.06);
-  --input-bg:rgba(0,0,0,.03);
+body.dunkel{
+  --bg:#0d0d0f; --flaeche:#18181d; --flaeche2:#1f1f25;
+  --rand:#2a2a32; --rand-stark:#353541;
+  --text:#f0f0f5; --text2:#b8b8c2; --text3:#7c7c8a; --text4:#4a4a55;
+  --rot-hell:#3a1414; --rot-text:#f09a9a;
+  --teal:#4fa3a5; --teal-hell:#16292a;
+  --bern:#e2b455; --bern-hell:#2e2510; --bern-rand:#5a4718;
+  --schatten:0 8px 28px rgba(0,0,0,.5);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{height:100%}
-body{
-  font-family:var(--sans);font-size:14px;line-height:1.5;
-  background:var(--bg);color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  min-height:100vh;overflow-x:hidden;
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--teal-mitte);outline-offset:2px}
+[hidden]{display:none !important}
+.mono{font-family:var(--mono);letter-spacing:-.01em}
+.klein-gross{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3)}
+
+/* ═══ Bauteile ═══ */
+.marke{display:flex;flex-direction:column;gap:2px;line-height:1}
+.marke i{display:block;width:22px;height:3px;background:var(--rot);margin-bottom:5px}
+.marke b{font-weight:700;letter-spacing:.14em;font-size:14px}
+.marke span{font-family:var(--mono);font-size:9.5px;color:var(--text3)}
+.chip{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11.5px;padding:2px 7px;border-radius:5px;background:var(--flaeche2);color:var(--text2);white-space:nowrap}
+.chip.teal{background:var(--teal-hell);color:var(--teal)}
+.seg{display:inline-flex;border:1px solid var(--rand);background:var(--bg);border-radius:8px;padding:3px;gap:2px}
+.seg button{border:0;background:none;border-radius:6px;padding:5px 12px;font-size:13px;font-weight:500;color:var(--text3)}
+.seg button.an{background:var(--flaeche);color:var(--text);box-shadow:0 1px 2px rgba(13,13,15,.16)}
+.knopf{height:36px;padding:0 12px;border:1px solid var(--rand-stark);border-radius:6px;background:var(--flaeche);font-size:13px;font-weight:500;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
+.knopf:hover{background:var(--flaeche2)}
+.knopf.rot{background:var(--rot);border-color:var(--rot);color:#fff}
+.knopf.rot:hover{background:var(--rot-tief)}
+.knopf.symbol{width:36px;padding:0}
+.karte{background:var(--flaeche);border:1px solid var(--rand);border-radius:8px;overflow:hidden}
+.karte>header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:13px 16px 11px;border-bottom:1px solid var(--rand)}
+.karte>header b{font-size:13px;font-weight:700;letter-spacing:.02em}
+.karte>header span{font-family:var(--mono);font-size:11.5px;color:var(--text3)}
+.karte>.herkunft{padding:8px 16px;border-top:1px solid var(--rand);font-family:var(--mono);font-size:11.5px;color:var(--text3)}
+.warn{background:var(--bern-hell);color:var(--bern);border:1px solid var(--bern-rand)}
+.karte>.herkunft.warn{border-width:1px 0 0}
+table.masse{width:100%;border-collapse:collapse;font-size:14px}
+table.masse th{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);text-align:left;padding:8px 10px}
+table.masse td{padding:9px 10px;border-top:1px solid var(--rand)}
+table.masse td:first-child{white-space:nowrap}
+table.masse .z{text-align:right;font-family:var(--mono);white-space:nowrap}
+table.masse tr.ziel td{background:var(--teal-hell)}
+table.masse .sym{font-family:var(--mono);color:var(--text3)}
+.fuss{font-family:var(--mono);font-size:10.5px;color:var(--text3);padding:14px 22px;letter-spacing:.02em}
+
+/* ═══ Kopf ═══ */
+.kopf{display:flex;align-items:center;gap:18px;padding:12px 22px;background:var(--flaeche);border-bottom:1px solid var(--rand)}
+.such{position:relative;flex:1 1 300px;max-width:520px}
+.such input{width:100%;height:44px;border:1.5px solid var(--rand-stark);border-radius:8px;background:var(--flaeche);padding:0 64px 0 14px;font-size:16px;font-weight:500;outline:none}
+.such input:focus{border-color:var(--teal-mitte);box-shadow:0 0 0 3px var(--teal-hell)}
+.such kbd{position:absolute;right:10px;top:11px;font-family:var(--mono);font-size:11px;color:var(--text3);border:1px solid var(--rand);border-radius:5px;padding:1px 6px;background:var(--bg)}
+.treffer{position:absolute;left:0;right:0;top:50px;background:var(--flaeche);border:1px solid var(--rand);border-radius:8px;box-shadow:var(--schatten);z-index:5;overflow:hidden}
+.treffer div{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border-top:1px solid var(--rand)}
+.treffer div:first-child{border-top:0}
+.treffer div[data-d]{cursor:pointer}
+.treffer div.an{background:var(--teal-hell)}
+.treffer div.rat{color:var(--text3);font-size:13.5px}
+.treffer small{font-family:var(--mono);font-size:11.5px;color:var(--text3)}
+.rechts{display:flex;gap:10px;align-items:center;margin-left:auto}
+.archiv{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 10px;border:1px solid var(--rand);border-radius:8px;background:var(--bg);font-size:12.5px;max-width:240px}
+.archiv i{width:8px;height:8px;border-radius:50%;background:var(--text4);flex:none}
+.archiv.an i{background:var(--teal-mitte)}
+.archiv span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ═══ Breit: „Auskunft" ═══ */
+.spur{display:flex;gap:8px;align-items:center;min-height:39px;padding:6px 22px;border-bottom:1px solid var(--rand);overflow-x:auto}
+.pin{font-family:var(--mono);font-size:12px;padding:3px 9px;border:1px solid var(--rand);border-radius:6px;background:var(--flaeche);white-space:nowrap}
+.pin:hover{border-color:var(--rand-stark)}
+.pin.an{border-color:var(--teal-mitte);background:var(--teal-hell);color:var(--teal)}
+#breit{padding:22px;max-width:1240px}
+.titel{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.titel h1{font-family:var(--mono);font-weight:500;font-size:32px;letter-spacing:-.02em;margin:0}
+.raster{display:grid;grid-template-columns:minmax(320px,5fr) 7fr;gap:18px;align-items:start}
+.stapel{display:grid;gap:18px}
+.zielreihe{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:14px 16px;border-top:1px solid var(--rand)}
+.zielreihe:first-child{border-top:0}
+.zielreihe .verb{font-size:13.5px;color:var(--text2)}
+.zielreihe .wert{font-family:var(--mono);font-weight:500;font-size:40px;letter-spacing:-.03em;line-height:1.1}
+.zielreihe .wert small{font-size:15px;color:var(--text3);letter-spacing:0;margin-left:6px}
+.zielreihe .marken{grid-row:1 / span 2;grid-column:2;display:flex;flex-direction:column;align-items:flex-end;gap:6px;justify-content:center}
+.zielreihe .zeile{grid-column:1 / -1;font-family:var(--mono);font-size:11.5px;color:var(--text3);margin-top:6px}
+.band{grid-column:1 / -1;height:6px;border-radius:3px;background:var(--flaeche2);position:relative;margin-top:8px}
+.band i{position:absolute;inset:0;border-radius:3px;background:var(--teal-mitte);opacity:.45}
+.band b{position:absolute;top:-4px;width:3px;height:14px;border-radius:2px;background:var(--teal)}
+.zeichnung{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px}
+.zeichnung .leise{color:var(--text3);font-size:13.5px}
+.leer{padding:40px 0;color:var(--text3);font-size:13.5px}
+.leer .wahl{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+#druckkopf{display:none}
+
+/* ═══ Schmal: „Werkbank" ═══ */
+#schmal{display:none;gap:16px;padding:16px;max-width:560px;margin:0 auto}
+.waehler{background:var(--flaeche);border:1px solid var(--rand);border-radius:12px;padding:16px;display:grid;gap:14px}
+.dreh{display:grid;grid-template-columns:48px 1fr 48px;align-items:center;gap:10px}
+.dreh button{height:48px;border-radius:10px;border:1px solid var(--rand-stark);background:var(--flaeche);font-size:22px;line-height:1}
+.dreh button:active{background:var(--flaeche2)}
+.dreh .mitte{text-align:center}
+.dreh .mitte small{display:block}
+.dreh input{width:100%;border:0;background:none;text-align:center;font-family:var(--mono);font-weight:500;font-size:34px;letter-spacing:-.03em;outline:none;padding:0;border-radius:0;-moz-appearance:textfield}
+.dreh input::placeholder{color:var(--text4)}
+.dreh input::-webkit-outer-spin-button,.dreh input::-webkit-inner-spin-button{-webkit-appearance:none}
+.regel{justify-self:center;margin-top:-6px;white-space:normal;text-align:center}
+.reiter{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rand);background:var(--bg);border-radius:12px;padding:4px;gap:4px}
+.reiter button{height:48px;border:0;border-radius:9px;background:none;font-size:16px;font-weight:500;color:var(--text3);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15}
+.reiter button small{font-family:var(--mono);font-size:11px}
+.reiter button.an{background:var(--flaeche);color:var(--text);box-shadow:0 1px 2px rgba(13,13,15,.18)}
+.reiter.flach button{height:40px;flex-direction:row;gap:6px}
+.zuletzt{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.zuletzt::-webkit-scrollbar{display:none}
+.zuletzt button{font-family:var(--mono);font-size:13px;height:36px;padding:0 12px;border:1px solid var(--rand);border-radius:999px;background:var(--flaeche);white-space:nowrap}
+.folge{display:grid;gap:10px}
+.folge>h2{margin:4px 2px 0;font-size:13px;font-weight:700;letter-spacing:.02em;display:flex;justify-content:space-between;align-items:baseline}
+.folge>h2 span{font-family:var(--mono);font-weight:400;font-size:11.5px;color:var(--text3)}
+.schritt{background:var(--flaeche);border:1px solid var(--rand);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:34px 1fr;gap:2px 12px;font-size:16px}
+.schritt .nr{grid-row:1 / span 3;width:34px;height:34px;border-radius:50%;background:var(--text);color:var(--flaeche);font-family:var(--mono);font-weight:500;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.schritt .verb{font-weight:500;color:var(--text2);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.schritt .wert{font-family:var(--mono);font-weight:500;font-size:46px;letter-spacing:-.035em;line-height:1.08}
+.schritt .wert small{font-size:16px;color:var(--text3);letter-spacing:0;margin-left:6px}
+.schritt .zeile{font-family:var(--mono);font-size:12px;color:var(--text3)}
+.hinweis{border-radius:12px;padding:12px 16px;font-size:14px}
+.mehr{height:48px;border-radius:10px;border:1px solid var(--rand-stark);background:var(--flaeche);font-size:16px;font-weight:500;width:100%}
+.lade{position:fixed;inset:0;background:rgba(13,13,15,.45);display:flex;align-items:flex-end;z-index:9}
+.lade>div{background:var(--bg);width:100%;max-height:86%;overflow:auto;border-radius:16px 16px 0 0;padding:10px 16px calc(20px + env(safe-area-inset-bottom));display:grid;gap:14px;box-shadow:var(--schatten)}
+.lade .griff{width:40px;height:4px;border-radius:2px;background:var(--rand-stark);justify-self:center}
+.lade table.masse{font-size:13px}
+.lade table.masse th,.lade table.masse td{padding:8px 6px}
+.lade table.masse th:nth-child(5),.lade table.masse td:nth-child(5){display:none}
+
+/* ═══ Hilfe ═══ */
+dialog{border:1px solid var(--rand);border-radius:10px;background:var(--flaeche);color:var(--text);box-shadow:var(--schatten);padding:0;width:min(560px,calc(100vw - 32px))}
+dialog::backdrop{background:rgba(13,13,15,.45)}
+dialog header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--rand)}
+dialog header b{font-size:15px}
+dialog .inhalt{padding:6px 18px 18px;font-size:14px;color:var(--text2)}
+dialog h3{font-size:13px;letter-spacing:.02em;color:var(--text);margin:14px 0 4px}
+dialog p{margin:0 0 6px}
+dialog code{font-family:var(--mono);font-size:12.5px;background:var(--flaeche2);border-radius:5px;padding:1px 5px}
+
+/* ═══ Umschaltung breit / schmal ═══ */
+@media (max-width:899px){
+  .kopf{height:56px;padding:0 16px;padding-top:env(safe-area-inset-top);box-sizing:content-box}
+  .such,.kopf .seg,.kopf .archiv,.spur,#breit{display:none}
+  .knopf{height:44px;border-radius:10px}
+  .knopf.symbol{width:44px;font-size:17px}
+  .knopf.drucken span{display:none}
+  .knopf.drucken{width:44px;padding:0}
+  .rechts{gap:8px}
+  #schmal{display:grid}
+  .fuss{padding:6px 16px calc(16px + env(safe-area-inset-bottom))}
 }
-/* ── HEADER (ATLAS-Stil) ── */
-header{
-  position:fixed;top:0;left:0;right:0;height:84px;z-index:100;
-  background:var(--glass-bg);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-  display:grid;grid-template-columns:auto 1fr auto;
-  align-items:center;gap:24px;padding:0 24px;
-}
-.header-left{display:flex;align-items:center;gap:18px;min-width:0}
-.logo-badge{
-  width:62px;height:62px;border-radius:50%;
-  border:2px solid var(--accent);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-  background:radial-gradient(circle at 30% 30%, #1a1a1f 0%, #0a0a0c 100%);
-  overflow:hidden;
-  box-shadow:0 0 18px rgba(160,21,23,0.35), inset 0 0 0 1px rgba(160,21,23,0.20);
-  padding:3px;
-}
-.logo-badge img{
-  width:100%;height:100%;
-  object-fit:contain;
-  border-radius:50%;
-  display:block;
-}
-.header-title-block{display:flex;flex-direction:column;justify-content:center;min-width:0}
-.header-brand{
-  font-size:11px;color:var(--text3);letter-spacing:0.6px;
-  margin-bottom:2px;text-transform:none;
-}
-.header-brand strong{color:var(--text);font-weight:700;letter-spacing:0.4px}
-.header-product{
-  font-size:22px;font-weight:700;color:var(--text);
-  letter-spacing:-0.5px;line-height:1;
-}
-.header-product strong{font-weight:800}
-.header-product-sub{
-  font-size:11px;color:var(--text3);font-weight:500;
-  letter-spacing:0.4px;margin-left:4px;
+@media (min-width:900px){
+  .knopf.drucken svg{display:none}
+  .lade{display:none}
 }
 
-/* Mitte: Status-Pill */
-.header-center{display:flex;justify-content:center;min-width:0}
-.header-status{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--bg2);border:1px solid var(--border2);
-  border-radius:24px;padding:8px 18px;
-  font-family:var(--mono);font-size:12px;color:var(--text2);
-  max-width:520px;
-}
-.status-dot{
-  width:8px;height:8px;border-radius:50%;flex-shrink:0;
-  background:var(--accent);
-  box-shadow:0 0 0 3px rgba(160,21,23,0.18), 0 0 8px rgba(160,21,23,0.5);
-}
-.status-dot.off{background:#666;box-shadow:0 0 0 3px rgba(102,102,102,0.18)}
-.status-text{
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-  letter-spacing:0.3px;
-}
-.status-text strong{color:var(--text);font-weight:700;margin-right:6px}
-
-/* Rechts: Toggle + Buttons */
-.header-right{display:flex;align-items:center;gap:14px}
-
-/* Theme-Switch als echter Slider */
-.theme-switch{
-  display:inline-flex;align-items:center;gap:10px;
-  cursor:pointer;user-select:none;
-  padding:4px 6px;border-radius:20px;transition:background .2s;
-}
-.theme-switch:hover{background:var(--bg3)}
-.theme-switch-label{
-  font-size:12px;color:var(--text2);font-weight:500;
-  letter-spacing:0.3px;
-}
-.theme-switch-track{
-  position:relative;width:44px;height:24px;
-  background:var(--accent);border-radius:24px;
-  transition:background .25s ease;
-  display:inline-flex;align-items:center;
-  box-shadow:inset 0 1px 3px rgba(0,0,0,0.3);
-}
-.theme-switch-thumb{
-  position:absolute;top:2px;left:22px;
-  width:20px;height:20px;background:#fff;border-radius:50%;
-  box-shadow:0 2px 5px rgba(0,0,0,0.35);
-  transition:left .25s ease;
-}
-body.theme-light .theme-switch-track{background:#d4b520}
-body.theme-light .theme-switch-thumb{left:2px}
-
-/* Rundes Help-Button */
-.btn-help{
-  width:34px;height:34px;border-radius:50%;
-  background:transparent;color:var(--text2);
-  border:1px solid var(--border2);
-  font-size:15px;font-weight:600;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .2s;font-family:var(--sans);
-}
-.btn-help:hover{border-color:var(--accent);color:var(--accent);background:var(--bg3)}
-
-/* ORDNER WÄHLEN - Hauptaktion */
-.btn-action{
-  background:var(--accent);color:#fff;border:none;
-  border-radius:6px;padding:9px 18px;
-  font-family:var(--sans);font-size:11px;font-weight:700;
-  letter-spacing:1.2px;cursor:pointer;
-  transition:all .2s;
-  box-shadow:0 2px 8px rgba(160,21,23,0.25);
-}
-.btn-action:hover{
-  background:var(--accent2);transform:translateY(-1px);
-  box-shadow:0 4px 14px rgba(160,21,23,0.4);
-}
-
-/* Print-Button kompakt */
-.btn-print{
-  width:34px;height:34px;border-radius:6px;
-  background:transparent;color:var(--text2);
-  border:1px solid var(--border2);
-  font-size:16px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .2s;
-}
-.btn-print:hover{border-color:var(--accent);color:var(--accent);background:var(--bg3)}
-header::after{
-  content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--accent),var(--accent2),transparent);
-}
-/* ── LAYOUT ── */
-.layout{display:flex;padding-top:84px;min-height:100vh}
-/* ── SIDEBAR ── */
-aside{
-  width:288px;min-width:288px;background:var(--bg2);
-  border-right:1px solid var(--border);
-  display:flex;flex-direction:column;position:sticky;top:84px;
-  height:calc(100vh - 84px);overflow-y:auto;overflow-x:hidden;
-}
-.sidebar-section{padding:16px;border-bottom:1px solid var(--border)}
-.sidebar-section:last-child{border-bottom:none}
-.section-label{
-  font-family:var(--mono);font-size:9px;font-weight:700;
-  color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;
-}
-/* ── INPUTS ── */
-label.field-label{
-  display:block;font-size:10px;font-weight:500;letter-spacing:0.5px;
-  color:var(--text3);margin-bottom:5px;
-}
-select,input[type=number],input[type=text]{
-  width:100%;background:var(--input-bg);border:1px solid var(--border2);
-  color:var(--text);border-radius:var(--radius);padding:8px 10px;
-  font-family:var(--sans);font-size:13px;outline:none;
-  transition:border-color .15s,box-shadow .15s;
-  -webkit-appearance:none;appearance:none;
-}
-select{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236a6a7a'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;cursor:pointer;
-}
-select:focus,input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
-select option{background:var(--bg3);color:var(--text)}
-.field-row{margin-bottom:10px}
-.field-row:last-child{margin-bottom:0}
-.inline-unit{
-  font-family:var(--mono);font-size:10px;color:var(--text4);margin-top:4px;padding-left:2px;
-}
-.input-group{display:flex;gap:8px;align-items:flex-end}
-.input-group input{flex:1}
-.input-group span{
-  font-family:var(--mono);font-size:12px;color:var(--text3);
-  padding-bottom:9px;white-space:nowrap;
-}
-/* ── HAND TOGGLE RH/LH ── */
-.hand-toggle{
-  display:grid;grid-template-columns:1fr 1fr;gap:6px;
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:var(--radius);padding:3px;
-}
-.hand-btn{
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  background:transparent;border:none;color:var(--text3);
-  border-radius:5px;padding:8px 6px;font-family:var(--sans);
-  font-size:11px;font-weight:600;cursor:pointer;letter-spacing:0.2px;
-  transition:all .15s ease;
-}
-.hand-btn:hover{color:var(--text2);background:var(--bg4)}
-.hand-btn.active{
-  background:var(--accent);color:#fff;
-  box-shadow:0 2px 6px var(--accent-glow);
-}
-.hand-btn.active .hand-symbol{color:#fff}
-.hand-symbol{font-size:15px;color:var(--text4);line-height:1}
-.hand-text{font-family:var(--mono);font-size:10px;letter-spacing:0.5px}
-
-/* ── VIEW TOGGLE Innen/Außen ── */
-.view-toggle{
-  display:grid;grid-template-columns:1fr 1fr;gap:6px;
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:var(--radius);padding:4px;
-}
-.view-btn{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
-  background:transparent;border:none;color:var(--text3);
-  border-radius:6px;padding:11px 6px;font-family:var(--sans);
-  font-size:12px;font-weight:600;cursor:pointer;letter-spacing:0.2px;
-  transition:all .15s ease;
-}
-.view-btn:hover{color:var(--text2);background:var(--bg4)}
-.view-btn.active{
-  background:var(--accent);color:#fff;
-  box-shadow:0 2px 8px var(--accent-glow);
-}
-.view-btn.active .view-btn-icon{color:#fff}
-.view-btn-icon{font-size:20px;color:var(--text4);line-height:0;display:flex;align-items:center;justify-content:center}
-.view-btn-icon svg{display:block}
-.view-btn-text{font-size:11px;letter-spacing:0.3px}
-.view-toggle-hint{
-  font-size:10px;color:var(--text4);margin-top:8px;line-height:1.5;
-}
-/* ── DRAWING FOLDER PICKER ── */
-.folder-status{
-  display:flex;align-items:center;gap:8px;
-  font-size:11px;color:var(--text3);font-family:var(--mono);
-  margin-bottom:8px;padding:6px 8px;
-  background:var(--bg3);border-radius:5px;letter-spacing:0.3px;
-}
-.folder-dot{
-  width:8px;height:8px;border-radius:50%;flex-shrink:0;
-}
-.folder-dot.off{background:#666;box-shadow:0 0 0 2px rgba(102,102,102,.15)}
-.folder-dot.on{background:#5aaa6a;box-shadow:0 0 0 2px rgba(90,170,106,.2)}
-.folder-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.btn-folder{
-  width:100%;background:transparent;color:var(--text2);
-  border:1px solid var(--border2);border-radius:var(--radius);
-  padding:8px;font-family:var(--sans);font-size:11px;font-weight:500;
-  cursor:pointer;letter-spacing:0.2px;transition:all .2s ease;
-  margin-bottom:6px;
-}
-.btn-folder:hover{border-color:var(--accent);color:var(--accent2);background:var(--bg3)}
-.btn-folder-clear{
-  width:100%;background:transparent;color:var(--text4);
-  border:1px dashed var(--border2);border-radius:var(--radius);
-  padding:6px;font-family:var(--sans);font-size:10px;font-weight:500;
-  cursor:pointer;letter-spacing:0.2px;transition:all .2s ease;
-}
-.btn-folder-clear:hover{color:var(--err);border-color:var(--err)}
-.folder-hint{
-  font-size:10px;color:var(--text4);margin-top:8px;line-height:1.5;
-}
-.folder-hint code{
-  font-family:var(--mono);background:var(--bg3);
-  padding:1px 5px;border-radius:3px;color:var(--accent);font-size:9px;
-}
-
-/* ── DRAWING RESULT CARD ── */
-.drawing-card{
-  background:var(--surface);border:2px solid var(--border2);
-  border-radius:var(--radius-lg);padding:14px 18px;margin-bottom:20px;
-  display:flex;align-items:center;gap:14px;
-}
-.drawing-card.found{border-color:#5aaa6a;background:rgba(90,170,106,.05)}
-.drawing-card.notfound{border-style:dashed;border-color:var(--border2);opacity:0.75}
-.drawing-icon{
-  width:42px;height:42px;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;flex-shrink:0;
-  background:var(--bg3);border:1px solid var(--border2);
-}
-.drawing-icon.found{background:rgba(90,170,106,.15);color:#5aaa6a;border-color:rgba(90,170,106,.3)}
-.drawing-info{flex:1;min-width:0}
-.drawing-title{
-  font-size:12px;font-weight:700;letter-spacing:0.5px;
-  text-transform:uppercase;font-family:var(--mono);
-  margin-bottom:3px;
-}
-.drawing-title.found{color:#5aaa6a}
-.drawing-title.notfound{color:var(--text4)}
-.drawing-filename{
-  font-family:var(--mono);font-size:13px;color:var(--text);font-weight:600;
-}
-.drawing-filename.muted{color:var(--text3);font-weight:500}
-.btn-drawing-open{
-  background:#5aaa6a;color:#fff;border:none;border-radius:var(--radius);
-  padding:9px 18px;font-family:var(--sans);font-size:12px;font-weight:600;
-  cursor:pointer;letter-spacing:0.3px;transition:all .2s ease;
-  white-space:nowrap;flex-shrink:0;
-}
-.btn-drawing-open:hover{background:#6cbe7c;transform:translateY(-1px);box-shadow:0 4px 12px rgba(90,170,106,.3)}
-
-/* ── INTRO MODAL ── */
-.modal-backdrop{
-  position:fixed;inset:0;z-index:1000;
-  background:rgba(0,0,0,0.72);backdrop-filter:blur(8px);
-  display:none;align-items:center;justify-content:center;
-  padding:20px;
-}
-.modal-backdrop.open{display:flex;animation:modalFadeIn .25s ease}
-@keyframes modalFadeIn{from{opacity:0}to{opacity:1}}
-.modal-window{
-  background:var(--surface);border:1px solid var(--border2);
-  border-radius:var(--radius-lg);
-  max-width:680px;width:100%;max-height:88vh;
-  display:flex;flex-direction:column;overflow:hidden;
-  box-shadow:0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(160,21,23,0.15);
-  animation:modalSlideUp .3s ease;
-}
-@keyframes modalSlideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
-.modal-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 24px;border-bottom:1px solid var(--border2);
-  background:var(--bg2);
-}
-.modal-title{
-  display:flex;align-items:center;gap:12px;
-  font-size:16px;font-weight:700;color:var(--text);
-}
-.modal-logo{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:32px;height:32px;border-radius:50%;
-  background:var(--accent);color:#fff;font-size:16px;
-  box-shadow:0 0 12px rgba(160,21,23,0.4);
-}
-.modal-close{
-  background:transparent;border:1px solid var(--border2);
-  color:var(--text3);width:30px;height:30px;border-radius:50%;
-  cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;
-  transition:all .2s;
-}
-.modal-close:hover{border-color:var(--accent);color:var(--accent2)}
-.modal-body{
-  padding:24px;overflow-y:auto;flex:1;
-}
-.modal-lead{
-  font-size:13px;color:var(--text2);line-height:1.6;margin:0 0 22px 0;
-  padding-bottom:18px;border-bottom:1px dashed var(--border);
-}
-.modal-feature{
-  display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;
-}
-.modal-feature-icon{
-  flex-shrink:0;width:28px;height:28px;
-  background:var(--accent);color:#fff;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:13px;font-weight:700;
-  box-shadow:0 0 0 2px rgba(160,21,23,0.15);
-}
-.modal-feature-text{flex:1;min-width:0}
-.modal-feature-title{
-  font-size:13px;font-weight:600;color:var(--text);
-  margin-bottom:4px;
-}
-.modal-feature-desc{
-  font-size:12px;color:var(--text3);line-height:1.55;
-}
-.modal-feature-desc code{
-  background:var(--bg3);padding:1px 6px;border-radius:3px;
-  font-family:var(--mono);font-size:11px;color:var(--accent);
-}
-.modal-tip{
-  margin-top:18px;padding:12px 14px;
-  background:rgba(160,21,23,0.06);
-  border-left:3px solid var(--accent);
-  border-radius:4px;
-  font-size:11px;color:var(--text2);line-height:1.6;
-}
-.modal-footer{
-  padding:16px 24px;border-top:1px solid var(--border2);
-  display:flex;justify-content:flex-end;background:var(--bg2);
-}
-.btn-modal-ok{
-  background:var(--accent);color:#fff;border:none;
-  border-radius:var(--radius);padding:10px 22px;
-  font-family:var(--sans);font-size:13px;font-weight:600;
-  cursor:pointer;letter-spacing:0.2px;transition:all .2s;
-}
-.btn-modal-ok:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 6px 16px var(--accent-glow)}
-
-/* ── CALC BUTTON ── */
-.btn-calc{
-  width:100%;background:var(--accent);color:#fff;border:none;
-  border-radius:var(--radius);padding:11px;font-family:var(--sans);
-  font-size:13px;font-weight:600;cursor:pointer;letter-spacing:0.2px;
-  transition:all .2s ease;margin-top:4px;
-}
-.btn-calc:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 6px 16px var(--accent-glow)}
-.btn-reset{
-  width:100%;background:transparent;border:1px solid var(--border2);color:var(--text3);
-  border-radius:var(--radius);padding:8px;font-family:var(--sans);
-  font-size:12px;cursor:pointer;transition:all .2s ease;margin-top:6px;
-}
-.btn-reset:hover{border-color:var(--accent);color:var(--accent2)}
-/* Info box */
-.info-box{
-  background:var(--teal-dim);border:1px solid rgba(79,163,165,.25);
-  border-radius:var(--radius);padding:10px 12px;
-  font-size:11px;color:var(--teal);line-height:1.5;
-}
-/* ── MAIN CONTENT ── */
-main{flex:1;padding:28px 32px;overflow-y:auto;overflow-x:hidden}
-/* ── THREAD BADGE ── */
-.thread-badge{
-  display:inline-flex;align-items:center;gap:24px;
-  background:var(--surface);border:1px solid var(--border2);
-  border-radius:var(--radius-xl);padding:20px 32px;margin-bottom:28px;
-}
-.thread-badge-label{font-size:13px;font-weight:600;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
-.thread-badge-value{font-family:var(--mono);font-size:66px;font-weight:700;color:var(--text);letter-spacing:-2px;line-height:1}
-.thread-badge-sep{width:1px;height:64px;background:var(--border2)}
-.thread-badge-detail{font-family:var(--mono);font-size:13px;color:var(--text2)}
-/* ── KPI STRIP ── */
-.kpi-strip{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}
-.kpi-card{
-  flex:1;min-width:120px;background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:14px 16px;
-  border-top:3px solid var(--accent);
-  transition:border-color .2s,transform .2s;
-}
-.kpi-card:hover{border-color:var(--accent2);transform:translateY(-2px)}
-.kpi-label{font-size:9px;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
-.kpi-value{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text);letter-spacing:-0.5px}
-.kpi-unit{font-size:10px;color:var(--text3);margin-left:3px}
-/* ── SECTION HEADER ── */
-.section-head{
-  display:flex;align-items:center;gap:12px;margin-bottom:14px;margin-top:28px;
-}
-.section-head:first-of-type{margin-top:0}
-.section-num{font-family:var(--mono);font-size:9px;font-weight:500;color:var(--accent);letter-spacing:1px;text-transform:uppercase}
-.section-title{font-size:13px;font-weight:600;color:var(--text2);letter-spacing:0.2px}
-.section-line{flex:1;height:1px;background:var(--border)}
-/* ── RESULT TABLE ── */
-.result-table{
-  width:100%;border-collapse:collapse;border:1px solid var(--border);
-  border-radius:var(--radius-lg);overflow:hidden;margin-bottom:6px;
-}
-.result-table thead th{
-  background:var(--thead-bg);padding:8px 12px;text-align:left;
-  font-size:10px;font-weight:700;color:var(--accent);letter-spacing:0.8px;text-transform:uppercase;
-  border-bottom:1px solid var(--border2);
-}
-.result-table thead th:not(:first-child){text-align:right}
-.result-table tbody tr{background:var(--row-bg)}
-.result-table tbody tr:nth-child(even){background:var(--row-alt)}
-.result-table tbody tr:hover{background:var(--row-hover)}
-.result-table td{
-  padding:9px 12px;border-bottom:1px solid var(--border);
-  font-size:13px;transition:background .15s;
-}
-.result-table tbody tr:last-child td{border-bottom:none}
-.col-name{color:var(--text2);font-weight:500;white-space:nowrap}
-.col-sym{font-family:var(--mono);font-size:11px;color:var(--text3);font-style:italic}
-.col-val{font-family:var(--mono);font-size:13px;color:var(--text);text-align:right;font-weight:500}
-.col-tol{text-align:right}
-.col-qual{text-align:right;font-family:var(--mono);font-size:10px;color:var(--text4)}
-.tol-chip{
-  display:inline-flex;flex-direction:column;align-items:flex-end;gap:2px;
-}
-.tol-line{font-family:var(--mono);font-size:11px;white-space:nowrap}
-.tol-pos{color:#5aaa6a}
-.tol-neg{color:#e07070}
-.tol-zero{color:var(--text4)}
-/* Tolerance badge colors */
-.badge{
-  display:inline-flex;align-items:center;gap:5px;
-  border-radius:4px;padding:3px 7px;font-size:10px;font-weight:600;font-family:var(--mono);
-}
-.badge-ok{background:var(--ok-dim);color:#5aaa6a}
-.badge-warn{background:var(--warn-dim);color:#d4a020}
-.badge-err{background:var(--err-dim);color:#e07070}
-.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
-.dot-ok{background:#5aaa6a}
-.dot-warn{background:#d4a020}
-.dot-err{background:#e07070}
-/* Tolerance bar */
-.tol-bar-wrap{display:flex;align-items:center;gap:8px;margin-top:2px}
-.tol-bar-track{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden}
-.tol-bar-fill{height:100%;border-radius:2px;background:var(--teal);transition:width .4s ease}
-/* ── HERO KPI — Produktionskacheln (Redesign) ── */
-.prod-kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px}
-.prod-kpi-grid.kpi-hidden{display:none !important}
-.prod-kpi{
-  background:var(--surface);
-  border:2px solid var(--border2);
-  border-radius:var(--radius-lg);padding:0;
-  box-shadow:var(--shadow-sm);
-  transition:border-color .2s,transform .2s,box-shadow .2s;
-  display:flex;flex-direction:column;overflow:hidden;
-}
-.prod-kpi:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md)}
-
-/* Header-Streifen oben mit Kategorie + Symbol */
-.kpi-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 22px;border-bottom:1px solid var(--border2);
-  background:var(--bg2);
-}
-.kpi-header-left{display:flex;align-items:center;gap:12px;min-width:0}
-.kpi-num{
-  font-family:var(--mono);font-size:15px;font-weight:700;
-  color:var(--text3);letter-spacing:0.5px;
-  background:var(--bg4);border-radius:5px;padding:5px 11px;
-}
-.kpi-category{
-  font-size:26px;font-weight:700;color:var(--text);
-  letter-spacing:-0.3px;
-}
-.kpi-symbol{
-  font-family:var(--mono);font-size:28px;font-weight:700;
-  color:var(--accent);letter-spacing:-0.5px;
-}
-
-/* Action-Zeile: Was ist zu tun */
-.kpi-action{
-  padding:20px 22px 10px;
-}
-.kpi-action-verb{
-  font-size:11px;font-weight:700;color:var(--accent);
-  letter-spacing:1.5px;text-transform:uppercase;font-family:var(--mono);
-  margin-bottom:12px;display:flex;align-items:center;gap:7px;
-}
-.kpi-action-verb::before{
-  content:'';display:inline-block;width:7px;height:7px;
-  border-radius:50%;background:var(--accent);
-}
-
-/* Hauptzahl: groß und dominant */
-.kpi-value-row{display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap}
-.kpi-value{
-  font-family:var(--mono);font-size:44px;font-weight:700;
-  color:var(--text);letter-spacing:-1.2px;line-height:1;
-}
-.kpi-value.green{color:#5aaa6a}
-.kpi-unit{font-size:16px;color:var(--text3);font-weight:500}
-.kpi-target-tag{
-  font-size:10px;font-weight:700;font-family:var(--mono);
-  background:rgba(90,170,106,.12);color:#5aaa6a;
-  border:1px solid rgba(90,170,106,.3);border-radius:4px;
-  padding:4px 9px;letter-spacing:0.8px;margin-left:6px;
-  text-transform:uppercase;
-}
-.kpi-target-tag.info{background:rgba(79,163,165,.12);color:var(--teal);border-color:rgba(79,163,165,.3)}
-.kpi-hint{
-  font-size:12px;color:var(--text3);line-height:1.5;
-  padding-bottom:18px;
-}
-
-/* Details-Sektion unten — abgesetzt */
-.kpi-details{
-  background:var(--bg2);border-top:1px solid var(--border2);
-  padding:13px 22px 15px;
-}
-.kpi-detail-title{
-  font-size:10px;font-weight:700;color:var(--text4);
-  letter-spacing:1.2px;text-transform:uppercase;font-family:var(--mono);
-  margin-bottom:10px;
-}
-.kpi-range{
-  display:flex;align-items:center;gap:12px;margin-bottom:10px;
-}
-.kpi-range-side{
-  font-family:var(--mono);min-width:0;display:flex;flex-direction:column;gap:2px;
-}
-.kpi-range-side.lo{align-items:flex-start}
-.kpi-range-side.hi{align-items:flex-end}
-.kpi-range-cap{font-size:9px;color:var(--text4);letter-spacing:1px;font-weight:700;text-transform:uppercase}
-.kpi-range-num{font-size:13px;color:var(--text3);font-weight:500;white-space:nowrap}
-.kpi-range-num.target{color:#5aaa6a;font-weight:700}
-.kpi-range-num.highlight{font-size:19px;color:var(--text);font-weight:700;letter-spacing:-0.3px}
-.kpi-range-num.highlight.target{color:#5aaa6a}
-.kpi-range-cap.strong{font-size:10px;color:var(--text2);font-weight:700}
-.kpi-range-bar{
-  flex:1;height:4px;background:var(--bg5);border-radius:2px;
-  position:relative;overflow:visible;
-}
-.kpi-range-bar-fill{
-  position:absolute;top:0;bottom:0;background:var(--teal);
-  border-radius:2px;left:0;right:0;
-}
-.kpi-range-bar-marker{
-  position:absolute;top:-4px;bottom:-4px;width:4px;
-  background:#5aaa6a;border-radius:2px;
-  box-shadow:0 0 0 2px var(--bg2);
-}
-.kpi-meta{
-  display:flex;justify-content:space-between;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:11px;color:var(--text3);
-  padding-top:9px;border-top:1px dashed var(--border);
-}
-.kpi-meta-item{display:flex;align-items:center;gap:5px}
-.kpi-meta-label{color:var(--text4);font-size:10px;letter-spacing:0.5px;text-transform:uppercase}
-.kpi-meta-val{color:var(--text2);font-weight:600}
-.kpi-meta-val.accent{color:var(--teal)}
-/* ── STEIGUNGSWINKEL SEKTION ── */
-.lambda-section{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:20px 22px;margin-bottom:6px;
-  border-top:3px solid var(--accent);
-}
-.lambda-header{display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap}
-.lambda-badge{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  width:80px;height:80px;flex-shrink:0;
-  border-radius:50%;border:3px solid;
-  font-family:var(--mono);
-}
-.lambda-badge-val{font-size:20px;font-weight:700;line-height:1}
-.lambda-badge-sym{font-size:10px;color:var(--text3);margin-top:2px;letter-spacing:0.3px}
-.lambda-info{flex:1}
-.lambda-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
-.lambda-formula{font-size:11px;color:var(--text3);font-family:var(--mono);margin-bottom:4px}
-.lambda-zone{font-size:11px;color:var(--text2)}
-/* Plattenempfehlungs-Grid */
-.plate-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:0}
-.plate-card{
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:var(--radius);padding:12px 14px;
-}
-.plate-card-head{
-  display:flex;align-items:center;gap:8px;margin-bottom:10px;
-}
-.plate-type-badge{
-  font-size:9px;font-weight:700;font-family:var(--mono);letter-spacing:0.8px;
-  text-transform:uppercase;background:var(--accent);color:#fff;
-  border-radius:3px;padding:2px 7px;
-}
-.plate-type-label{font-size:12px;font-weight:600;color:var(--text2)}
-.plate-code-main{
-  font-family:var(--mono);font-size:18px;font-weight:700;
-  color:var(--text);letter-spacing:-0.3px;margin-bottom:4px;
-}
-.plate-code-hint{font-size:10px;color:var(--text3);line-height:1.5}
-/* Diagramm-Streifen */
-.lambda-diagram{
-  display:flex;height:22px;border-radius:6px;overflow:hidden;
-  border:1px solid var(--border);margin-top:14px;position:relative;
-}
-.lam-zone{display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;font-family:var(--mono);letter-spacing:0.3px;color:rgba(255,255,255,.75);flex-shrink:0}
-.lam-marker{position:absolute;top:-1px;bottom:-1px;width:2px;background:#fff;border-radius:1px;box-shadow:0 0 6px rgba(255,255,255,.6)}
-.lam-marker-label{position:absolute;top:-18px;font-size:9px;font-family:var(--mono);font-weight:700;color:#fff;transform:translateX(-50%);white-space:nowrap}
-/* Winkel-Tabelle */
-.wz-table{width:100%;border-collapse:collapse;margin-top:12px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.wz-table th{background:var(--thead-bg);padding:6px 10px;text-align:left;font-size:9px;font-weight:700;color:var(--accent);letter-spacing:0.8px;text-transform:uppercase;border-bottom:1px solid var(--border2)}
-.wz-table td{padding:7px 10px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:11px}
-.wz-table tr:last-child td{border-bottom:none}
-.wz-table tr.active-row td{background:rgba(79,163,165,.1)}
-.collapsible-toggle{
-  width:100%;display:flex;align-items:center;justify-content:space-between;
-  background:transparent;border:1px solid var(--border);color:var(--text3);
-  border-radius:var(--radius);padding:9px 14px;font-family:var(--sans);
-  font-size:12px;font-weight:500;cursor:pointer;margin-top:20px;
-  transition:all .2s ease;letter-spacing:0.2px;
-}
-.collapsible-toggle:hover{border-color:var(--accent);color:var(--accent2)}
-.collapsible-toggle.open{border-color:var(--border2);color:var(--text2)}
-.toggle-arrow{
-  font-family:var(--mono);font-size:10px;transition:transform .25s ease;
-  color:var(--text4);
-}
-.collapsible-toggle.open .toggle-arrow{transform:rotate(180deg)}
-.collapsible-body{
-  display:none;margin-top:12px;
-}
-.collapsible-body.open{display:block}
-/* ── PLACEHOLDER ── */
-.placeholder{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:80px 40px;text-align:center;gap:16px;
-}
-.ph-icon{
-  width:64px;height:64px;border:2px solid var(--border2);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:24px;color:var(--text4);
-}
-.ph-title{font-size:16px;font-weight:600;color:var(--text2)}
-.ph-sub{font-size:13px;color:var(--text3);max-width:320px;line-height:1.6}
-/* ── ERROR ── */
-.error-box{
-  background:var(--err-dim);border:1px solid rgba(192,64,64,.3);
-  border-radius:var(--radius);padding:12px 16px;
-  font-size:12px;color:#e07070;margin-bottom:20px;
-}
-/* ── FOOTER ── */
-.page-footer{
-  padding:16px 32px 24px;
-  font-size:10px;color:var(--text4);text-align:right;
-  font-family:var(--mono);letter-spacing:0.3px;
-}
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:4px;height:4px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:#2a2a32;border-radius:3px}
-/* ── PRINT ── */
-@page{
-  size:A4 portrait;
-  margin:12mm;
-}
+/* ═══ Druck: immer das Blatt, hell, eine Seite A4 ═══ */
 @media print{
-  html,body{background:#fff !important;color:#000 !important;font-size:11px !important}
-  header,aside,.btn-calc,.btn-reset,.btn-toggle,.btn-print,.collapsible-toggle{display:none !important}
-  .layout{padding-top:0 !important;display:block !important}
-  main{padding:0 !important;overflow:visible !important}
-  .placeholder{display:none !important}
-  .page-footer{display:none !important}
-  .collapsible-body{display:none !important}
-  .drawing-card{display:none !important}
-
-  /* Nur die aktive KPI-Gruppe drucken (display per JS gesetzt, !important hier vermeiden) */
-  #result-area{page-break-inside:avoid !important}
-
-  /* Print-Header sichtbar */
-  #print-header{
-    display:block !important;
-    font-size:13px;font-weight:700;margin-bottom:10px;
-    border-bottom:2px solid #a01517;padding-bottom:6px;color:#000;
+  @page{size:A4 portrait;margin:12mm}
+  body,body.dunkel{
+    --bg:#fff;--flaeche:#fff;--flaeche2:#ebebef;--rand:#c9c9d0;--rand-stark:#bcbcc4;
+    --text:#0d0d0f;--text2:#3a3a42;--text3:#55555f;--teal:#1f6a6c;--teal-hell:#e5f0f0;
+    --bern:#8a5a00;--bern-hell:#fbf0d4;--bern-rand:#e6cf94;
+    background:#fff;font-size:12px;-webkit-print-color-adjust:exact;print-color-adjust:exact;
   }
-
-  /* Gewinde-Badge */
-  .thread-badge{
-    border:1px solid #999 !important;background:#fff !important;
-    padding:12px 18px !important;margin-bottom:14px !important;
-    gap:18px !important;page-break-inside:avoid;
-  }
-  .thread-badge-value{font-size:32px !important;color:#000 !important;letter-spacing:-1px !important}
-  .thread-badge-label{font-size:10px !important;color:#444 !important;margin-bottom:2px !important}
-  .thread-badge-detail{font-size:11px !important;color:#000 !important}
-  .thread-badge-sep{height:36px !important;background:#bbb !important}
-
-  /* KPI-Grid: 2 große Kacheln nebeneinander */
-  /* Versteckte KPI-Gruppe bleibt im Druck versteckt */
-  .prod-kpi-grid.kpi-hidden{display:none !important}
-  /* Sichtbare KPI-Gruppe: 2 große Kacheln nebeneinander */
-  .prod-kpi-grid:not(.kpi-hidden){
-    display:grid !important;grid-template-columns:1fr 1fr !important;
-    gap:14px !important;margin-bottom:16px !important;page-break-inside:avoid;
-  }
-  .prod-kpi{
-    border:1.5px solid #888 !important;background:#fff !important;
-    box-shadow:none !important;page-break-inside:avoid;
-    transform:none !important;
-  }
-  .kpi-header{
-    background:#f0f0f0 !important;padding:10px 16px !important;
-    border-bottom:1.5px solid #bbb !important;
-  }
-  .kpi-num{background:#ddd !important;color:#222 !important;font-size:11px !important;padding:3px 8px !important}
-  .kpi-category{font-size:16px !important;color:#000 !important;font-weight:700 !important}
-  .kpi-symbol{font-size:20px !important;color:#a01517 !important;font-weight:700 !important}
-  .kpi-action{padding:14px 16px 8px !important}
-  .kpi-action-verb{font-size:11px !important;color:#a01517 !important;margin-bottom:8px !important;font-weight:700 !important}
-  .kpi-value{font-size:38px !important;color:#000 !important;font-weight:700 !important}
-  .kpi-value.green{color:#15722a !important}
-  .kpi-unit{font-size:14px !important;color:#333 !important}
-  .kpi-target-tag{
-    background:#e8f5e9 !important;color:#15722a !important;
-    border:1.5px solid #15722a !important;font-size:11px !important;padding:3px 8px !important;font-weight:700 !important;
-  }
-  .kpi-hint{font-size:11px !important;color:#444 !important;padding-bottom:10px !important;line-height:1.4 !important}
-  .kpi-details{background:#f7f7f7 !important;border-top:1.5px solid #bbb !important;padding:12px 16px 14px !important}
-  .kpi-detail-title{font-size:10px !important;color:#555 !important;margin-bottom:8px !important;font-weight:700 !important}
-  .kpi-range{margin-bottom:10px !important;gap:12px !important}
-  .kpi-range-cap{font-size:10px !important;color:#555 !important;font-weight:700 !important}
-  .kpi-range-cap.strong{color:#000 !important}
-  .kpi-range-num{font-size:14px !important;color:#222 !important}
-  .kpi-range-num.target{color:#15722a !important;font-weight:700 !important}
-  .kpi-range-num.highlight{font-size:20px !important;color:#000 !important;font-weight:700 !important}
-  .kpi-range-num.highlight.target{color:#15722a !important}
-  .kpi-range-bar{background:#ddd !important;height:5px !important}
-  .kpi-range-bar-fill{background:#777 !important}
-  .kpi-range-bar-marker{background:#15722a !important;box-shadow:0 0 0 1.5px #fff !important}
-  .kpi-meta{font-size:11px !important;color:#333 !important;border-top:1px dashed #ccc !important;padding-top:9px !important}
-  .kpi-meta-label{color:#666 !important;font-size:10px !important;font-weight:600 !important}
-  .kpi-meta-val{color:#000 !important;font-weight:700 !important}
-  .kpi-meta-val.accent{color:#15722a !important}
-
-  /* Platten-KPI nutzt Standard .prod-kpi Druckregeln (oben definiert) */
+  .kopf,.spur,#schmal,.lade,dialog,.fuss,.zeichnung-karte,.leer .wahl{display:none !important}
+  #breit{display:block !important;padding:0;max-width:none}
+  #druckkopf{display:block;font-family:var(--mono);font-size:10px;color:var(--text3);border-bottom:1px solid var(--rand);padding-bottom:6px;margin-bottom:12px}
+  .titel{margin-bottom:10px}
+  .titel h1{font-size:26px}
+  .raster{grid-template-columns:1fr;gap:10px}
+  .stapel{gap:10px}
+  .karte{break-inside:avoid}
+  .karte>header{padding:8px 12px 7px}
+  .ziele .reihen{display:grid;grid-template-columns:repeat(3,1fr)}
+  .zielreihe{border-top:0;border-left:1px solid var(--rand);padding:10px 12px}
+  .zielreihe:first-child{border-left:0}
+  .zielreihe .wert{font-size:28px}
+  table.masse{font-size:12px}
+  table.masse td{padding:6px 10px}
+  table.masse th{padding:6px 10px}
 }
-#print-header{
-  display:none;
-  font-size:13px;font-weight:700;margin-bottom:16px;
-  border-bottom:2px solid #a01517;padding-bottom:8px;
-}
-/* Animations */
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.animate-in{animation:fadeUp .3s ease forwards}
-.section-block{animation:fadeUp .35s ease forwards;opacity:0}
-.section-block:nth-child(1){animation-delay:.05s}
-.section-block:nth-child(2){animation-delay:.10s}
-.section-block:nth-child(3){animation-delay:.15s}
-.section-block:nth-child(4){animation-delay:.20s}
-</style>
-
-<style>
-  header{grid-template-columns:1fr auto !important}
-  .drawing-card,.folder-status,.folder-hint,.btn-folder,.btn-folder-clear,#header-status{display:none !important}
-  html,body{overflow-x:hidden}
-  @media (max-width:760px){
-    header{position:static;height:auto;z-index:auto;gap:12px;padding:12px 16px}
-    .header-brand,.header-product-sub,.theme-switch-label{display:none !important}
-    .layout{flex-direction:column;padding-top:0;min-height:auto}
-    .layout > aside{width:100% !important;min-width:0 !important;position:static !important;top:auto !important;height:auto !important;border-right:none !important;border-bottom:1px solid var(--border)}
-    #main-content{padding:18px 16px !important;width:100%}
-    .prod-kpi-grid,.plate-grid{grid-template-columns:1fr !important;gap:12px !important}
-    .modal-card,.modal-box{max-width:94vw !important}
-  }
-  @media (max-width:420px){
-    .header-product{font-size:15px}
-    #main-content{padding:14px 12px !important}
-  }
-
-  /* ===== iOS-App-Feeling + kein Zoom ===== */
-  html{-webkit-text-size-adjust:100%}
-  body{touch-action:manipulation;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
-  header{padding-left:max(16px,env(safe-area-inset-left)) !important;padding-right:max(16px,env(safe-area-inset-right)) !important}
-
-  @media (max-width:760px){
-    /* Große, gut tippbare Eingaben; font-size >= 16px verhindert iOS-Auto-Zoom beim Fokus */
-    select,input,textarea{font-size:17px !important}
-    #sel-norm{min-height:56px !important;padding:15px 16px !important}
-    .input-group{align-items:stretch}
-    .input-group input{min-height:58px !important;font-size:22px !important;font-weight:600;padding:12px 16px !important}
-    .input-group span{font-size:16px !important;padding:0 14px !important}
-    .field-label{font-size:14px !important;margin-bottom:7px !important}
-    .field-row{margin-bottom:16px !important}
-    .btn-calc{min-height:60px !important;font-size:18px !important}
-    .sidebar-section{padding:18px 16px !important}
-  }
-
-  /* ===== Druck: alles auf EINE A4-Seite ===== */
-  @page{margin:8mm}
-  @media print{
-    main{zoom:0.75}
-    #result-area,.prod-kpi,.prod-kpi-grid,.thread-badge{
-      page-break-inside:avoid !important;break-inside:avoid !important;
-    }
-  }
 </style>
 </head>
 <body>
-<script>try{if(localStorage.getItem('amtec_theme')!=='dark'){document.body.classList.add('theme-light','light');}}catch(e){}</script>
+<script>try{if(localStorage.getItem('amtec_theme')==='dark')document.body.classList.add('dunkel');}catch(e){}</script>
 
-<!-- HEADER -->
-<header>
-  <div class="header-left">
-    <div class="logo-badge">
-      <img src="data:image/png;base64,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+3o/kCNih99lQre9xlrr2L5i0WpdtFE0YGNdsuVSwe6ww7a2bVSrXWvd8XbtKWvZbGPannnWGdZaa/98yy121qyHrLXWHnHEoXa33Xax1lr77sL59umn51hrrf3bQ/dbwH7rWyfZyu2EE46z0sduseXU6mNf+tIXbKYusNZae91111jlC1sOC9Zaa8844/TEH9T2qaeetIB9Z/48a621Lc11dttttrLWWnv+L86zp5/2bWuttUd98XN29KgR1lpr77rrdnv44YdYa6199ZXn7OOPP2Kttfa+++62gP3Nr35urbV21sN/s3PnPmGttfaG66+zqbRvAfv9759urbVWm9DuuusuFrC77+m+63dP/44F7KWX/Npaa21Tc4P9zqnftNZau8su0y1gPV9ZwP79ib/ZhQvesIA95ZTjrLXGrj1+LbvdtltZa/P2nHO+Z4UQVim18jq5YQJ20sTx9pFZt9rb77zO3n7bTHvvvdfZi6+60MoglxCfCbuqdcZxUq3e6VjR3s7CRUuR0kOgiaOQIJVh6tSplKKyawSxoFBsv/2ORFHEIYcexCGHHczLr77I6DFjMVajtebKKy9n88234qEH72eX6bsyYmQzW2+9DQsXzmPevDfZaaedsNoNiezr7cJay/4zZuAJp20G8gNYY+nucs/NmHEAuVyKFSuW09vrVF1fbw/dXSvo6h5g+fLlrqQqCLj8iquI45BdPr0LBx50EABnn30O7e0dxLHmtxdexHbbTeMP113Nbrvtybg1xtDeuZQ4jjnxxJPYYottefmVuey51+7U5XJICZ/+9HRmzbqXd+bNY+dddkxstSWOY/KJ79Tb108c96J1TLFQJI5Dwqg45Fp3dneyrN2Z2kK+wPIlb4KI+c0FP2fWww9z1lk/TsyDWW3d5qZTp5JryBHHEcLGKN+ntyfEhPnBcTcfygQkP8NikcWLFztXwSZEScD4tcZTCktVvl+jNSva2/F9n+uuu5a111qHqVOn8vuLL6ahqQmlVLVlOZvNYq0ll8mw++57cM+9d/PQQw+y626709iYIw4jMtl63nrzVbbfbnvGj1/TTRn1fKyF+voGXn/jVSZPXpctt9ycONZ4vlc971Qm4Pjjj+YLXzwCpRSZbJrOzm7uvOsO9ttvBieffAILFsxjzpy5tLa04HmKhqZGQPDCi89irWXihIlYqxPfooHW1ibGjB7Dq6+9Rl/fAI1NDeywww488MAsXnn5VXbbfbqz58bieR5ehU1MKTzPxa9KenieNwS7cP5B8hpAqhTFqMQppx1H25g2Tv7mGUNs/epuLS3NRCZ2iKjWSOUzb177++YBVt8aZi2e8gDDCy+9VHVQpHSLOHnSZFJeyjUzGENdfR2/vuBXvPzyixx++Bd48u9PcfMfb6alqQkTOUfmK1/+KgsXvsPW22zPFVdeQkNjE01NzTz2yKPMmjWLxoYm1lxzTfKFAXzf5+577qOzq4PDPnsYfX29LlowkE5nmTXrYV548XkOOfhQVqxoRykv8cZDspl6LrzwUs4++4dVf0YIwUUX/Z5cXYZJkzbkdxdeWI1aBr1sW2UlUb5X7WC65uqZLFgwH2Mtxx//DaIoZptttsLzctx77z3MenQWUzfdEs+TlMvlDx2/iyGX3ZAK0uy66x709vbR2dnxngtYCXvX32AyYankIggEKI+FC9/+GAJQc2avvPBiguSp5GCarbbcmvpsjjiKMMaQyWZ47bXX2XHaDnzlq0fx7LNzOeCAgzj3h+cSxSEACxcu5MYbb+KEk47n6GOOY++998Fay6Qpk1lvvfWx1jJ9+s709PYB0N6+nNtvu5PPHvZZlBLV4gnXr2C444672H/G/tTV1SXzdyHwU/T1dTNlygT22GO3ZHFdSdqcOU/y7HPPUSr185e/3IJQTl2DC7c8z6uGhHEUV0GMK664gu997wek01m+9lVXezBt2o5YW2Kdtdehuake38uwzTZbk88XqrhDhVRj6M61eJ77LM/3kuJbU63AMtqQTmd5eu4zpFMBp333W6vd+ZXC3VQqxXrrTaJYzKOkQimfcmRY8M68VXz+hxCAis2ZM+dJQh3j+b5LnOiQtrY2Jq07iXKxjJSCYr7ITX/8I7fe+leuuvIa9t57L8KwxEYbbkhdNoe1ljvvuJXTTjudG2+5iUwuxdZbb4kQgu+e9n1OPfU0hBDssOM0GhsasdbS1NTMbbf/lUmT1qe+voly2XW5GBvR2trKrbf+hba2UUyYMKlqcytgz8KF77BkydIqVZxUjrWkq6sLITSFwgDIwXRuX38fcRzT1NSMEIIlS5ZUheHuu+/lggt+R3dPB9N3no4Qgq222oo4LnLNtddywgknYSmyw47bVfH3UrmIMYawHFXb33XsOn26urqJ45hyKayZWj4IYPmBzw++/yNuvOEmjvjcQay33rpVXGJVO3TdddehqbnBsbYAKkjR1dXDggULP54AVN741huvM3/hIqRIYS3EkZt6PX3nnenv6yVIpckX8tTVNTBtx+kcf/wxHHH44QRBmjdef4OBgQGEEDQ1t1LfnKGhoZ7GpkZ2320P3nzrdTbcaAobb7Q+r7/xKrvvthv19XXu9Y1NPPbY47zzzltDVJkUHplMmjdef5s5c+YMcugAvhcQ+D5BEJBOZRBC4Hl+1d5m0hk8P+VMmaa6C7fZamtOOvkETjr528yf/wZvvT2PXM6dR0trM77vYWJBJpNi3Lgx7LDj9tx9972ss/YEtthiS5a3t7PvPvvR1dWJMSVmzJjBjjvtwD777kNXdxf9PXly9TmEMBx55Of45rdO5IwzTmOdddZCCUk2nUnO30NJnzjSXHbpNcSR4btnfLfa3FGrzlUCQm3+qamkUz5xrLHGkAoyzFu4lEJft8sOfhwBUFJSLgzw9zlzAElsrBvuBGy19ZZuNqA2pNMpTj/9VF584Vl+9asL+NnPfsmDD97PWWefQxRr+vv7GSgUsLGl1Jtng0nrg5DcfsdtzF+4iPnvvsushx/C9wLGjhpNb08nWodgBTfdeIN7f74fT8GKjhUUiyWkFNx888309fXR3z/guox6u9wux80s7OvrJT/Q76ZuGUtvXz/Ll3e676YEOg7p6FjKztN35pyzz+Txx2dzyKFHIIQgX9R0d3dQKpeIY81LL71CWIrYfttt6esucNvt97FseTtvvfUOd935AOtMWIve7l6+/vXjmbzBRtx4w3V4ns8Xv3i0qzouh7w9bz577LEbx3/jy5x04teZsM5aLF60ghXLXRSTzxdZsGAp2WyOJUuWcdFvL2fzzTdjo002cJzANQJQ0RpbbbkphUIeVEBsyqSCFC8++yZuILX4QD7IakXE8zziOObzXz6G6668hCjqRskAKT0K+RKbbb45vcUBMqkUA/19KOmqUDSGrs5uUqkUQconFQRE5bgqjVIplBCUozBh/krsnx8Q6hjlu77EOHYNk4HvY7UhimNSfuBSplqjtSEIAqy1hGEZ33ft3GEUJT5BGh2HST+hSRjGBFEUObVsNZ7yKJVDSBZJYUmlMxhr8JRHHEdJy7dTz3FsHKwclqu+iTHO/wijkHIpIpMJ8HyfcqlIGBoHZQuB53tEYYRJZiKaJGpACKIwTHwRRRhG1U2YSqfAMsTBrEQFbSNb+cst19E30EMsI2wMmWwLJ570fV598fkqs+tHJojQCc78yCOP0lso4vkpsDG6XCBb18iuu+xCX18vFsjV1+NnMgyUihRKIY0tzaSzWSySfKnssmtJV68xmlIYoqSq4dOTFMIyBkuhHBIl/XYoj3IUYy14nk8Yx8TaIKRyFzSO0Ebj+T6xNoRag1KgFMWwRFTh4JOuqSWKk1HtCAyKcqxBKqxS1NXXk83lqmSWYRhWz9kqQSkKiW1EKS4hPenmAiQTw4phAbBksmmiOGYgn0cbS5BSWOG6fkqlMlonRSbapaijKCIKwyosXC6HVd9ECEG5VF4puqhct52mbUddXZpIhwhj8YMsC5as4M033gRktbDkIwuANe4kFr79Gk8++RTYDFoPDj7Y+zOfgdi4humk7TrwU6Q9H2IDseulSUlvWDgiqpJf5f0VIH0PK4Sbrp3QnCjc35VaAKW8ZFyKrf4Nspo8USKhaTHgKc8dpzLyTQqk8qrpaCUESkg86e5G66QcMqFy8Tz3e4X2RXrJT79m6pjLS3rKxfixjhBKuu8nPXSlXkC4HICQQ2carzQgUwydM7CqMK7CQzx9+vYUywWnzSJNNlfHU8+9QlwuuEl8HyAV/f4sYcqBQLfe+leX4UMltLFFdv30rmwwaTLFgYIjgDSuQtVqk1RPJCnXVdCW2dq++po8v0hqAmTC1y9ryB9gKDH0oLM6mNaV1lbnCsjkOENBb1uTljZJ/YFJGMGHUlbYIa+1g2zgdmXC68E5xMalf60Gq4cQQg0pIh022n6l46zmb5Fo0PHjxvGpzTalp7c70QgQm5hHZs2u9nZ8IixhFTNw++130zlQJAgcGVIUlkilMuw/40A6u7pRnufIDjCulGvYfVUCUMv4LW1lsWvy9bUFIEMEwKzyAllbWxk0lBmsUn07uAg1xSQ2mSg0bFGGTPuq1jmKYedS+x5X2DAolIYhAwotH7tApIIv7LPPTmTqFWHoYY0gqMvw1oLFvP3ic4D3vpnEDywA1ric+aJ3XuWB+x5AiTSxjl2G0IYcedRRjB49mnK57KROvH9BQ3URaqW7hmVj5Qv8Tyqr+Re/CeG8/0wmw34H7EtXTzdBAFaXyWWbeOihpwlLRaS0H/iKyQ/2wc5WX331VU65JgUe5bDE+LXW4ZCDD6GjoxPf91ddXFKz4KuLS+1qcIha9b7ye1dtWuyHKKtZ7fms6vPskKrUlY+xUinacH7Cj7v7XYXR7nt9mraxYykMFBAiwvMEfX2aWQ88Wu275pMUAJf7Fzxwz708/eKbKD+L1holFNZEHHvccTQ1NLrwq7ZOr0YVr1KoVmOnhl54MazYbqjKHS5Y9j0Wc7jtXdVnrurxwWPXmA/sSu+zrFb+PwH178rUPU9x2GH70d/Xh698oigkVd/KE39/jqULXkdIOaTn8BMRABd6SOKoyMWXXO66UTB40icKS6w7cTKHHHoYK5a343kqKZF+/5N4L63wXkMRa22053lD7sM3rBCCwA/wfZ/A95FSVrF/P8H/hRD4gV99vLKU7rVelbLeX83n/DNuSrmF3Wvv3Vh//QkUe3vxCBBCEssct9xyx5Cy/A+TjPpA4iITDuD6ppHMfeE51l2jFV0uYqTEVx7vLl7GNttuC0qixHsv+gcTDFMDgdZM5qx5v7Gagf4icRRjrEEqaG5qcl02CXllqVyir6dQfU86lyKONHHoEkGZrIfn+fT3Debp6xtyDtMvlQjLMX4g8XyfYn4wHs/mAnQFw6/xVQa10jBrYT66BqhoynQ64I83XUlzS5pi3hBHllyL5O9Pz+f0E76HENGHHhnzgecG2iQkLBX6iaRk3z32REclpO+hwyItI8ZSjorcccddtLY2V73QD3pCqwp3VhceuYLTmFy2jgt/dyFHHXUkRxzxOXKZLE89NZdUOoUQkmKpyLoTJnHa6adxwIx9OODAg+jq7GD8uPGc97OfMmPGDN584w36+gY477yfcMyxR9Pa0sTcuU+jY8vkSZM4//yfE4Yh8+fP54fnnsuXvnwkqZTiuedexPPV+wv4J1AerpTCGMORXzyc3feYTkdnF1IptA3xM8388rwLWbbkXVev+I+cGeTwaMkfLr+cNxcsQKZyRLFGej467ueE409kw/XWp6+3DynFhz4Zp/bNai/qEHusHZ/eoYccTn19A77y+P1FlzJt2k709w+QyqQIw5ipm23OySd9k7XWHMfkieuw8QZTeOD++5i07jpstdUWXDnzUq68+jJOOumbCGG56KJL2XPP3SiXy5z7w7P5wheOYsKEtTnrrO/zjW8cSyoFN1z/f2y73TaUSzEgPtFx7qsK+4wxjBkziiOPOoKurm4ClSGO+6lvTjPniTd57qlnqxXHH/r4H3aBpBQM9PVw9jk/Qkm/OgfARBH19Q389Kc/pae7z8Wrw3btSqPah/kAQjh41fkQZrWDJisOnYldi/VNf7yZPffcHWMMO02fRmGgTHdXJ+ViRF1dluXL5/PQw7OYefVVPPjQwzz97FMc9tnDuPGP17HJxpsgBZx62jc57rhjsRZGtY1ms6mbsN9++9A/sJxMOs0uO+/Mrbf+iYMP+iLGFNlm6y2xxtakaSt+yTDcqTI97mOof2stp3znROrqs5TKJYTQCOkR6Qwzr5wJxHzEsYEffnCkMQZfKm689hoeenIu6VTW8QIrRbnYxd5778uXvvQlFi9aSpAOBrt1Kr3w7+v42SGf9V67yyaFF62trUihnNMmPHbdZTpf/sJXOOigGYwe2caoUWvzhSOP5Mqr/sBue+zJ1lvvyNixa/K9M87iwQcfYcZ+h3HxxZdzw/U3oE2Jhx56kAt+91t+85vfsWjRMorFMp2d3Wy33Y6ccso3kDJNLtuwCug26S38hBSCUgqtNbvtvgu77T6dFSuW4XsepbCbluYx3H3HU7z28jMfKOnziQmATXB7qyNO+fYp5LVCWtBGYlSKKO7l5z//GZMmTaKvtx8hxftEpRXn6X28/lXBppXaxXJIGLmGjjAMOf6E47ngdxdx4e9+x7333ctnDz+YTTfdnL7+dtZbfwM23HB97rr7Hp577gW++IUvkU4H/OUvt7DTTrtz0EEH09DQxI477ESuLsuIkS3ssstO/OL882lvb+eQQw6hUOhEa/Oe0crHxa+kdGje6NFtnPn9U+nt7kJJl+ZOZZtZtqLI1Zdf8b71gp+4AIDr4lFS8szsWVxw0cUE6SaiBDHUcUxTYxOXXXYZ+YG8q3ixZpWMhe8HDq18RWvFxlHRWwy5+gyf2W8PpJQsWLiALx55FOutty7rbbABn9l/f845+xxGtbWQy2YpF/u58MJfUi7287Wjj0LrkJNOPoFdP70nJ5x0NI8++hijxo7ibw/dxyabbEI6k2LChLXYbOqm3HzzzXz+80eSzTawbPmSmtNajfr/GGq/cj/73NNpaEgRlQoo4SqLsg1r8/tLZ9LZufhjC4D4qHIqpERaS7ahiUeefo5NJ45GF3uxXgNRXCCbaeY3vzmfU049lTXHjaUcRtXhzO+t1u37o3RAGIY0NTTwzDPPIIQgk6lnzpwn2X//GRgTIYWgt2+AQw45hD/eeDMdHYuR0ue000/lxz/6McqTYBWlcoGe7i7WGDeezs4O2kaO4Zxzz+WX5/+KVMZjyZLFfO+M7xGVY664cibvvPM6XV197L33PnR1dzr+4qTryZmtYcjfR9AEnqeIY803TjiGE074CgsXvk3geRTLmqaWkTw4ay5nnHJG4mjHH8vkiI+jqHwpiYzhUzvtymMP3IMf9xKTRcqQOI7JZls4+uivcMVVVzF+rTUoFkpJKZP4QPjASqhczSBnYwxaG9ZcYzxKSQbyeRYvWYQUkiAIXC2gFPT1DbDuxIlMmjSZZ599hq6uTiZPnkIUxSglieOYMAxJpdNVwGX58nY6uzrxlGLy5Cl0tK9g0aKlbL75VFpHjGDOk0/S09tPkFJVJs5PSgAqRTh77bUrv/zNT1iyeCGedJk+pXL0Fi1fPepoOpctA+nYVj8evvgxAUqlPLSO+e7ZP+YnZ51BqdDpKFCTOb9Spdhjj915bPbjrLHGaIrFcjVXbVc9RHjVySMgCkNXSJG8Lkj5xFFc5QVIpQKwInEeXRQRhhHlcgmBQ/sC36dUKied3zXdxBWSB5LafuVRLodEZQcwuaqiZJECqi3YteTOQ1T/R1j8itO34UYbcPXVF1GO+imHMcJaoqhMU8s4TjntRzz6wH0fy/H7RAVASFdUERvFTbffyaH77EJpYAUqSPIFfkB/X5E99tydl155ibaRIyiXy1ghVumAmGEzAStpsHKpxLhxa9Lc3Io2MYHyef2tN9EmTlBKQVR2ZVpCuBKsUrHEpHUnUw5D3l30Lr7vo7XG8xRRFOEp5YpArFv0MCzj+QodG0qliFFtbWy//Q489NDfGDt2Dd5dtIi+vn78pGRNG0fVghBobR3Hf0UAzEdb/InrTuCaa6/A8zX5fDdK+BTLIW2jx3HpZddx2YWXoGQKbcp8Ujf7ce9CSCsEtmXUGPviWwusNWU7MNBly6V+WxjoskYX7ZLF79r1N5hss3WBXXOtMXbE2BF21NgRdnRyHzWmtXpvS+4jR7fYkaNa7JhxbdYLsFdfc4U11thiMW+N1fagQw5wn+9acWxja531M4N9cH6g7JLFC+1V11zh+uB8rPDdc5m6oPo6lTyWyvhDvte+++1lX3/rJbv/jD1ssdhnP3v4wUO/u1rF9VDJXXzw61fp+1t77TXtrMfutk89+6B98OG/2FmP3m7vu/cG++Qzj9jzfnuhlV7KSinfs9fvw97lJyJB1iCFomv5Ug47YAbLugukUhm0LqI8yJeKjB47mjvvuJuJEyaxYkUHGd+vUaH2fSMDrV1NYFfXUtZccyzjx4/j/nsf4OtfP5o7b7+N3134G4SWTNthGjfdfCO/+91vaRvRRndPFxuuvz5XXnkZ3zrpm0zbfnvO+9mPyKaz/OjH53LIIQey2dTN+PGPzyWXzXHOOT/gT7fcxN5778GC+fO4845b6e3pIwhSDPQPsPHGG3DNtTO57PKLGNM2kkMOOYhvf+skfvGLn7Lm+LFuxKsVH3j3V3b+hAnrcPW1l1Ffl2Ggt4vAs8TlPHUtY3hj3hLOO/tMbNJk80kijx84F/BB8AGlFO3LlvD0i6/y2UMPw/esCxm9gHIpz6i2key33wH87W9/440336SpqSkhQ7CrpzNNavnyAwX23XcfNt1kKl7gseGGGzGytYWrrrqWvz/+KEcc8XkK+X5+/vOfAYYDDziECRPWor+/l4032oSGhhQHH3wIL7zwLD/+0S948MF7uOzSmYwc2UJDfSPHHfd1srk0Rx/7VZ577llOO/00Xnr5ec77yc+55ZZbmDHjQO6443Yu+v1v6e7qYtNNNmDiuhOZOHEC3z3jTCDk2mtvoFgquWjHvr/19Ty3+JMnT+Kaa6+gviFDT08nad/5LrlsAyv6NCd/45usWLYUIdXHdvo+ERzgveoGPM/j4btv48ivfhXjN2JFgAlDfKUYGOhjzNhW7r3nPnbeaTqL3l2K9JSrFE4cPTNMAxhjqsOktdbkcvUcdOCBHHTggRRLBXp6ullr7XX4yU/P5tnnnmX0qDU588yzmL7zTtxww/WsO3ECt952K9/+9qmkUjnmzJ3L/Plv8ZWvfJn29gXU16fYeuup3Hrrn2kbOZKujj6i0CCQ5LJ1LF6yGLDEcYTvB+Tq6igUB2hf0c2U9Sbj+4Kn5s5m++0/TWdnd+Jc2vet7HERiGbqZhtz3Q2Xks0Jent6SPs+YRiTzjbTHaX51onfYcmC+a5TyWg+6Zv8pA+o45iU5/OnP1zHV48/iVS6nhRg45jA9ygV8tQ3ZLjr7ns49phjWbqoHaNtUmI2FC+q8OhVa++DgGXLFzJp3Q2ZOnULHn74Ub7//dPo6OjkrDN/zKd3+zT9/T2oCqOJhTgqE8eadDrnHLUYFi58lz322Je5c+cCsN1203nttVdJp1MUi3mefuYZzjvvPLo6e8ikUmhtiGPtKGJiQ29fD7fe9lfO/+WvCVJZBgYcGZPy5fs6f66mz7F/HHLIAfzh+suQUtPb30Xg+5TLEdlMAwWd5lvf/j5vvfpSNRv4D0k2fdIHtOBYuJXiD7//LV8+9utE2SakHxCXS/jSEpcLRHGZiy++mAsu+CUDA/0M9A3g+x7WSueaVCasVgJ/AUGQYvSotbn+xj9w7XVXc865P+DnPz+fJ+fMJgjSjBwxEqUER33pi9x77x18/sjPE2NpbmolCAI8z6Ovf4CXXnqJhoYWHn98LkuWriCVyvHc8y/Q0dHJ6LEjWW+9iZx44vH4KUVDcxN+yqO1tQUv8EilPbKZOg468ECm7TgNS8TIEc1u5+v3j/Er+Y0zzzqVn/7sTPID/ZQLEWmZIyr1kq1rpCfKcOIJ3+KVpx6v+gj/sEKTT8oHWKVP4Pk899QcXnnrbfb9zAGkMhmK5ZLrhzcxpbCPaTvuym677crjs5/grTfnUVefrUk9V6p6IIrLtLa00NvbSzqTpqmxiZtuupnl7cs54ICDuefeu/neGd/nzbfeYtq0nXji73M447vfp23UaObOnctrr71Gri7Hrbf+ma6ubnxfcuutf2bp0mX09vUy86qreWz2E6w3ZQOmTJ7Cr371G1566WWCIMMD9z9AKpXmttvu4L57H2DPvfYmnx/g/PN/TTrIMX/Buzz88KzVBtWViiKtDZMmr8vFF/+G/T+zB0uXLHI08QpKpTINzWPo6CtzwvEn8drzz/3DF/8TwQE+KLK1/af34KYbrmeNthZ6+paS8sBaRRQbGhtb6Osb4Mwzz+Giiy/CDxQN9Q3VhsfKDPV83lX/6Midue9L4tgQpALKxZBsLk2pVEJ5HlEYk0r5xHGc4OoQx4ZU2j1nNChPJp06EKQ9V1mkHUueNYM/P+qVFEIMmd75hS8cyimnnUQ6SNG5fBleIIltTFiOaR05hldeb+dbJ5/E4gXz/ymL/08RgFq0cL0NN+LGG//I1I03pKdvGSnpaNQiHeF5PplsCw8++Dd+8IPv8fjjc2hsypHJZIgjXaV0q5SmDTqKzp56ShHrGKk8N6gi6b13NQa6igzq6pjbQXraWkYuIXCTPJNOIXccF4lUCi4q2slU+WzBxGbIwlecPIANN1yPM753CtOmbcfy9iVEYRlfeJR1hLGCEW1rcs8Dszjne2fT09X5T1v8f5oAAHjKJ9YRTa0j+fXvLuSoww+llO8kjsooP0Bbg9YhjY3NxNpy0UWX88tf/pJ3Fy6msaGeVNa1QA/20g9WCVW/hLVVt2Z408aQJFSFc1cMHTtbW4pua0q/K7D2Sk0llZebVe/4Ea0j+MY3vsbnPn8gAklHxzKk5yGQhKUiQTaHn2vl0suu5+ILfgM6+sQg3n85AQCHn1dID7/+7e/yo3POpCWn6Ote6qpevYzjH1CChroRLFu2hMsuu5xLL7mYJUtXkMkF5LJZx1MQa5B6GHSQMHjalUvJhgNNg+GaXY3AVASBYaXuNZ1uyUzEQW4+992amhr5whcP58tHfo6RoxpZ1t6ODiWBp9BxH5GJyLWNZ+miAuf9+Gc8dP+dSaX1e9dF/NsLQKXsSwiFMRGbbLUtF/7ud+y41eYU8x2E5QE838eiiOKQIEiTy7WwaNG7XHPtH7h65kzenvcOUkB9fR0q8NCxY9iuUsgKMWwxWc0iV1XBIDt5lU629vEakms7qA0cH58gjgZV9bhxY/ns4Ydw2GcPYdwao+nqWEo+H7nztJ1EoSQTtJFpaOLO++/nF+f+guVL33Xkmib+/9L/9E8XgMqHysQvUKksJ33ndE499duMqvfo61mWRBBulGsUR6QzWXLZVrq6O7nzznu4+eabeeSRR+jrHUB5kMlmHDdAQgljhnUjDU8vf7CftdT2surNG2PRsa5etSDls/32W3PwwTPY5dPTaWxsoKu7g1JhwHUjC0G5pBGepGFkAwvfLXHBL6/irr9ckxxTve9wx/84ARj0C5JsHDB56hacee6POOQzu+PZAl3dvUhpUMKpXB07zr+G+iaiyDDv7Xe46557uOOOO3h67tP09TmeID8lk+YNVW2lgsF+/OpuX41gVIpWKrlIHWviaOglSmdSbLbZJuy+267suvt0Jk5cG9B0dnZTLpVRviOmCssSgaGhuZ5SMcvNNz/ApZf8ms72d6vn9s9W+f9SArAqx2n3ffbnlNNOY5cdt8XEBYp9XY4uxvcRyCqzVyaTI5erp1DMs3jxYh6ZNZtnn32Gxx6fw7y33qZULhKFesg39bykqhgXVg66AHawmHMV65HOZpg4YR222noLNt98Y7bZZgvGjR2D5/n09vUxMDCANgZfBFhrCPUAQiga60dSFooHHp7DFb+7nBeff2JIAuhf4fb/XQCqoaKULhdgDAiP/Q46mJNPPpEdttsKj5h8zzKiWDtySiHdXF0NyhekfI9cXRYlBL3dBTq7unn9zbd5/bVXWPTuAhYtWsyChYtYsnQxxWKJqBwRRab6xX1P4vse6UyGNceuwdhxoxgzdgzjxo9hvSmTmbj2BFpHjCSTTRPqmIH+PAPlXuI4IpABGIGILTouIgOPTNNICqFi9qN/56rLruWpJx6smpDKdJF/ldu/jAAMT4+6K+ax676f4atf/Rq777wjTXU5isUeivlerI5w5KMSg0THBmPA8ySe7xEEaTKZACEF5WJIoRBSistEYYgNNXEUoa11BS1SIKXCT6XwUj7ptIfnO/OULxQISyVK5TI6itxUDiXRRqGNJtYRUhmyuQx+ppFlHQP87W+zufEPN/PS3Mer2IKjgTf8q93+5QSgclZKDlWTkzfblkMPPZgZn9mbyVPGk/IE5WIXxWIRU9b41g23Dn034sUm4IwxFiXcgAo83/UPJCM+jEhel1QFGRsT6xJaS4frmyRikRFCGKyOsVGIsJpACoJUPSrXQE/R8OLrb3PXbfdx/113s2TBG87HEcINkjKGf1WOA8G/MvtCIghuuLLbPUG2nu2mTWP3fWaw6447MnHdNcnlAmJdoljsQxcHkp3q7LkArPIwUiCSmTs6mdRshanWAhprEUagjESbGGsjrClXx8NKPw1+Fj/TiFU+3X19vP3mPB55eDYP3/cgLzz7HJhiTcaPf8kd/+8lALURg3SDGrQWQELx6jex0aemssMOW7HFNluy0cYbMnbMGBqyGTxhMTpEhyFhWMBGZTCOuTyyxo3BMQ7Gq5AwSqEwyTxEFaRAeY6dNPbo6u1j0eLlvPTqa8yZM5cnnniBha+9BHagRlhl4kwa/l1u/zYCMBg1UCWtHu5Je5lmJqw3hfXXm8xaEyYwZd11GDuqjbYxbbQ2NpIKfJTnIXzp+hqMs8vaaOIwpBSVKIVFOjt6WLq8hyXLunn1tTdY+u47vPbySyx5Zx46Lq6EZ1hrquxiH6sP/H8C8OFDSHd31TJmdROyg0b8XCPp+jqam1vI5nKkUoFj09CacrlMf38/vT09lPu6iQr96Liwajg7IZQwq+A0+re8hvwHMTDVCgS10zoxH+NYCZP3MFq7/5hrxn8BBVcl/VuxIUOGnQ5C/0NSfP9pC/1fLQCr++Krutn/ssvzXyQAH4RBwf5XboT/sTD+F9/k/y7Bf/ft/wFw3kK1nFcqSwAAAABJRU5ErkJggg==" alt="amtec Logo">
-    </div>
-    <div class="header-title-block">
-      <div class="header-brand">amtec · <strong>SPANNHYDRAULIK GMBH</strong></div>
-      <div class="header-product"><strong>DIN13</strong> <span class="header-product-sub">Gewindeberechnung</span></div>
-    </div>
+<div class="kopf">
+  <div class="marke"><i></i><b>DIN 13</b><span>amtec</span></div>
+  <div class="such">
+    <input id="feld" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Gewinde, z. B. M24 oder M24x2" aria-label="Gewinde eingeben">
+    <kbd id="kuerzel">Strg K</kbd>
+    <div class="treffer" id="treffer" hidden></div>
   </div>
-
-  <div class="header-right">
-    <div class="theme-switch" onclick="toggleTheme()">
-      <span class="theme-switch-label" id="theme-label">Dunkel</span>
-      <span class="theme-switch-track"><span class="theme-switch-thumb" id="theme-thumb"></span></span>
-    </div>
-    <button class="btn-help" onclick="showIntro()" title="Hilfe / Funktionsübersicht">?</button>
-    <button class="btn-print" onclick="druckenAuslösen()" title="Drucken / PDF" aria-label="Drucken">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 6 2 18 2 18 9"></polyline>
-        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-        <rect x="6" y="14" width="12" height="8"></rect>
-      </svg>
-    </button>
-  </div>
-</header>
-
-
-<!-- LAYOUT -->
-<div class="layout">
-
-  <!-- SIDEBAR -->
-  <aside>
-    <!-- Section 01: Eingabe -->
-    <div class="sidebar-section">
-      <div class="section-label">01 — Eingabemodus</div>
-      <div class="field-row">
-        <label class="field-label">Gewindegröße (Normgewinde)</label>
-        <select id="sel-norm" onchange="onNormChange()">
-          <option value="">— Normgewinde wählen —</option>
-        </select>
-      </div>
-      <div style="text-align:center;font-size:10px;color:var(--text4);margin:8px 0;letter-spacing:0.3px">— oder manuell eingeben —</div>
-      <div class="field-row">
-        <label class="field-label">Nenndurchmesser d</label>
-        <div class="input-group">
-          <input type="number" id="inp-d" inputmode="decimal" min="1" max="200" step="0.5" placeholder="z.B. 24" oninput="onManualInput()">
-          <span>mm</span>
-        </div>
-      </div>
-      <div class="field-row">
-        <label class="field-label">Steigung p</label>
-        <div class="input-group">
-          <input type="number" id="inp-p" inputmode="decimal" min="0.25" max="8" step="0.25" placeholder="z.B. 3" oninput="onManualInput()">
-          <span>mm</span>
-        </div>
-      </div>
-      <div class="field-row">
-        <label class="field-label">Gewinderichtung</label>
-        <div class="hand-toggle" id="hand-toggle">
-          <button type="button" class="hand-btn active" data-hand="RH" onclick="setHand('RH')">
-            <span class="hand-symbol">↻</span>
-            <span class="hand-text">RH · Rechts</span>
-          </button>
-          <button type="button" class="hand-btn" data-hand="LH" onclick="setHand('LH')">
-            <span class="hand-symbol">↺</span>
-            <span class="hand-text">LH · Links</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Section 02: Aktionen -->
-    <div class="sidebar-section">
-      <div class="section-label">02 — Berechnung</div>
-      <button class="btn-calc" onclick="berechnen()">▶ Berechnung starten</button>
-      <button class="btn-reset" onclick="zuruecksetzen()">↺ Zurücksetzen</button>
-    </div>
-
-    <!-- Section 02b: Ansicht Innen/Außen -->
-    <div class="sidebar-section">
-      <div class="section-label">Ansicht</div>
-      <div class="view-toggle" id="view-toggle">
-        <button type="button" class="view-btn active" data-view="innen" onclick="setKpiView('innen')">
-          <span class="view-btn-icon">
-            <svg width="30" height="30" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
-              <!-- Innengewinde: zwei Wandungen mit nach innen zeigendem 60°-Zickzackprofil -->
-              <rect x="4" y="4" width="32" height="32" rx="1.5" stroke-width="1.4" opacity="0.45"></rect>
-              <!-- linke Wand mit Gewindezähnen nach rechts -->
-              <path d="M11 7 L11 33" stroke-width="1.8"></path>
-              <path d="M11 9 L15 11 L11 13 M11 15 L15 17 L11 19 M11 21 L15 23 L11 25 M11 27 L15 29 L11 31"></path>
-              <!-- rechte Wand mit Gewindezähnen nach links -->
-              <path d="M29 7 L29 33" stroke-width="1.8"></path>
-              <path d="M29 9 L25 11 L29 13 M29 15 L25 17 L29 19 M29 21 L25 23 L29 25 M29 27 L25 29 L29 31"></path>
-            </svg>
-          </span>
-          <span class="view-btn-text">Innengewinde</span>
-        </button>
-        <button type="button" class="view-btn" data-view="aussen" onclick="setKpiView('aussen')">
-          <span class="view-btn-icon">
-            <svg width="30" height="30" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
-              <!-- Außengewinde: Bolzen mit nach außen zeigendem 60°-Zickzackprofil -->
-              <!-- Bolzenkern (Mittelzone) -->
-              <path d="M13 6 L13 34" stroke-width="1.4" opacity="0.45"></path>
-              <path d="M27 6 L27 34" stroke-width="1.4" opacity="0.45"></path>
-              <!-- linke Flanke: Zähne nach außen (links) -->
-              <path d="M13 8 L9 10 L13 12 M13 14 L9 16 L13 18 M13 20 L9 22 L13 24 M13 26 L9 28 L13 30"></path>
-              <!-- rechte Flanke: Zähne nach außen (rechts) -->
-              <path d="M27 8 L31 10 L27 12 M27 14 L31 16 L27 18 M27 20 L31 22 L27 24 M27 26 L31 28 L27 30"></path>
-              <!-- obere und untere Begrenzung des Bolzens -->
-              <path d="M13 7 L27 7 M13 33 L27 33" stroke-width="1.8"></path>
-            </svg>
-          </span>
-          <span class="view-btn-text">Außengewinde</span>
-        </button>
-      </div>
-      <div class="view-toggle-hint">Zeigt Mutter- oder Bolzen-Werte für eine aufgeräumte Ansicht</div>
-    </div>
-
-    <!-- Section 03: Info -->
-    <div class="sidebar-section">
-      <div class="section-label">03 — Hinweise</div>
-      <div class="info-box">
-        Berechnung nach <strong>DIN 13 / DIN 103</strong>.<br>
-        AMTEC reduziert Mutter-Toleranz 7H auf <strong>2/3</strong> für sicheres Aufschrauben.<br><br>
-        Für Fertigung gilt immer: <strong>größte zulässige Toleranz</strong> (=wirtschaftlichste Herstellung).
-      </div>
-    </div>
-
-
-    <div class="sidebar-section">
-      <div class="section-label">05 — Fertigungsregel</div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div style="background:var(--bg3);border-radius:var(--radius);padding:8px 10px;font-size:11px;color:var(--text2);line-height:1.5">
-          <span style="color:var(--accent);font-weight:600">Mutter Innen-Ø:</span><br>
-          Drehen auf <strong>D₁ max</strong> (größtes Maß)
-        </div>
-        <div style="background:var(--bg3);border-radius:var(--radius);padding:8px 10px;font-size:11px;color:var(--text2);line-height:1.5">
-          <span style="color:var(--accent);font-weight:600">Bolzen Außen-Ø:</span><br>
-          Drehen auf <strong>d₁ max</strong> (nächste Untergrenze)
-        </div>
-      </div>
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <main id="main-content">
-    <div id="print-header"></div>
-    <div id="result-area">
-      <div class="placeholder">
-        <div class="ph-icon">⌀</div>
-        <div class="ph-title">Gewinde wählen und berechnen</div>
-        <div class="ph-sub">Wähle ein Normgewinde aus dem Dropdown oder gib Nenndurchmesser und Steigung manuell ein. Danach auf "Berechnung starten" klicken.</div>
-      </div>
-    </div>
-  </main>
-
-</div>
-
-<div class="page-footer">© <span id="footer-year">2026</span> · amtec Spannhydraulik GmbH · DIN 13 Gewindeberechnung v2.0 · entwickelt von Thomas Scholl</div>
-
-<!-- INTRO MODAL -->
-<div class="modal-backdrop" id="intro-modal" onclick="if(event.target===this) closeIntro()">
-  <div class="modal-window">
-    <div class="modal-header">
-      <div class="modal-title">
-        <span class="modal-logo">⚙</span>
-        <span>Willkommen zur DIN 13 Gewindeberechnung</span>
-      </div>
-      <button class="modal-close" onclick="closeIntro()">✕</button>
-    </div>
-    <div class="modal-body">
-      <p class="modal-lead">Werkzeug zur Berechnung metrischer ISO-Gewinde nach DIN 13 — exakt nach AMTEC-Toleranzschema mit Worst-Case-Schnitttiefen und Unterlagplatten-Empfehlung.</p>
-
-      <div class="modal-feature">
-        <div class="modal-feature-icon">①</div>
-        <div class="modal-feature-text">
-          <div class="modal-feature-title">Normgewinde oder freie Eingabe</div>
-          <div class="modal-feature-desc">Dropdown mit allen DIN-13-Standardgewinden M1–M100, oder Nennmaß + Steigung manuell eingeben für Sondergewinde bis M500.</div>
-        </div>
-      </div>
-
-      <div class="modal-feature">
-        <div class="modal-feature-icon">②</div>
-        <div class="modal-feature-text">
-          <div class="modal-feature-title">Klare Produktionsziele</div>
-          <div class="modal-feature-desc">Vier Kacheln zeigen direkt was zu tun ist — Innengewinde Kernloch (D₁ max), Innengewinde Tiefe (H₁), Außengewinde Außen-Ø (d₁ min), Außengewinde Tiefe (h₃). Worst-Case-Werte mit voller Toleranzausnutzung.</div>
-        </div>
-      </div>
-
-      <div class="modal-feature">
-        <div class="modal-feature-icon">③</div>
-        <div class="modal-feature-text">
-          <div class="modal-feature-title">Steigungswinkel + Unterlagplatte</div>
-          <div class="modal-feature-desc">Automatische Berechnung des Steigungswinkels λ und Empfehlung der passenden Unterlagplatte für Sandvik-Halter. Umschaltbar zwischen Rechts- (RH) und Linksgewinde (LH) — bei LH wird der Winkel negativ.</div>
-        </div>
-      </div>
-
-      <div class="modal-feature">
-        <div class="modal-feature-icon">④</div>
-        <div class="modal-feature-text">
-          <div class="modal-feature-title">Zeichnungs-Archiv</div>
-          <div class="modal-feature-desc">Lokalen Ordner mit PDF-Zeichnungen verbinden. Wird bei jeder Berechnung automatisch durchsucht — bei Treffer öffnet ein Klick die Zeichnung im Standard-Viewer. Namensschema: <code>068-4.pdf</code> für M68×4, <code>010-15.pdf</code> für M10×1.5.</div>
-        </div>
-      </div>
-
-      <div class="modal-feature">
-        <div class="modal-feature-icon">⑤</div>
-        <div class="modal-feature-text">
-          <div class="modal-feature-title">Druck auf A4</div>
-          <div class="modal-feature-desc">Über „Drucken / PDF" erstellst du eine optimierte einseitige Fertigungsausgabe — alle relevanten Maße, Toleranzen und die Plattenempfehlung auf einem Blatt.</div>
-        </div>
-      </div>
-
-      <div class="modal-tip">
-        <strong>Tipp:</strong> Dieses Fenster erscheint nur beim ersten Start. Du kannst es jederzeit über den <strong>? HILFE</strong>-Button oben rechts wieder aufrufen.
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn-modal-ok" onclick="closeIntro()">Verstanden — los geht's</button>
-    </div>
+  <div class="rechts">
+    <div class="seg" data-schalter="seite"><button data-w="innen">Innen</button><button data-w="aussen">Außen</button></div>
+    <div class="seg" data-schalter="hand"><button data-w="RH" title="Rechtsgewinde">RH</button><button data-w="LH" title="Linksgewinde">LH</button></div>
+    <button class="archiv" id="archiv" hidden title="Ordner mit den PDF-Zeichnungen wählen"><i></i><span></span></button>
+    <button class="knopf drucken" id="drucken" title="Drucken / PDF"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></svg><span>Drucken</span></button>
+    <button class="knopf symbol" id="hilfe-auf" title="Hilfe">?</button>
+    <button class="knopf symbol" id="thema" title="Hell / Dunkel">◐</button>
   </div>
 </div>
+
+<!-- Breit (ab 900 px): ein Feld, ein Blatt. Dieses Blatt wird auch gedruckt. -->
+<div class="spur" id="spur"></div>
+<main id="breit"></main>
+
+<!-- Schmal (Handy): Wähler und Arbeitsfolge -->
+<div id="schmal">
+  <div class="waehler">
+    <div class="dreh" data-was="d">
+      <button data-r="-1" aria-label="kleinerer Durchmesser">−</button>
+      <div class="mitte"><small class="klein-gross">Nenn-Ø M</small><input id="in-d" type="number" inputmode="decimal" step="any" placeholder="24" aria-label="Nenndurchmesser"></div>
+      <button data-r="1" aria-label="größerer Durchmesser">+</button>
+    </div>
+    <div class="dreh" data-was="p">
+      <button data-r="-1" aria-label="kleinere Steigung">−</button>
+      <div class="mitte"><small class="klein-gross">Steigung</small><input id="in-p" type="number" inputmode="decimal" step="any" placeholder="3" aria-label="Steigung"></div>
+      <button data-r="1" aria-label="größere Steigung">+</button>
+    </div>
+    <span class="chip regel" id="regel"></span>
+    <div class="reiter flach" data-schalter="hand"><button data-w="RH">↻ Rechts <small>RH</small></button><button data-w="LH">↺ Links <small>LH</small></button></div>
+  </div>
+  <div class="reiter" data-schalter="seite"><button data-w="innen">Mutter<small>Innengewinde</small></button><button data-w="aussen">Bolzen<small>Außengewinde</small></button></div>
+  <div class="zuletzt" id="zuletzt"></div>
+  <div class="folge" id="folge"></div>
+</div>
+
+<div class="fuss">© <span id="jahr">2026</span> T. Scholl · Im Auftrag der amtec Spannhydraulik GmbH · DIN 13 Gewindeberechnung v3.0</div>
+
+<div class="lade" id="lade" hidden><div id="lade-inhalt"></div></div>
+
+<dialog id="hilfe">
+  <header><b>DIN 13 Gewindeberechnung</b><button class="knopf symbol" id="hilfe-zu" aria-label="Schließen">✕</button></header>
+  <div class="inhalt">
+    <h3>Eingabe</h3>
+    <p>Am Rechner: Gewinde ins Feld tippen und Enter drücken. <code>24</code> oder <code>M24</code> nimmt die Regelsteigung, <code>24x2</code> eine eigene Steigung. Am Handy: Nenn-Ø und Steigung mit + und − wählen oder die Zahl antippen und eintippen. Gerechnet wird sofort.</p>
+    <h3>Fertigungsziele</h3>
+    <p>Mutter: Kernloch auf <b>D₁ max</b> drehen (größtes Maß). Bolzen: Außen-Ø auf <b>d₁ min</b> drehen (kleinstes Maß). Die Gewindetiefe ist die größte Schnitttiefe, die bei voller Ausnutzung der Toleranzen entstehen kann.</p>
+    <p>Für die Fertigung gilt immer die größte zulässige Toleranz, das ist die wirtschaftlichste Herstellung.</p>
+    <h3>Toleranzen</h3>
+    <p>Berechnung nach DIN 13 / DIN 103. amtec verkleinert die Mutter-Toleranz 7H auf 2/3 für sicheres Aufschrauben.</p>
+    <h3>Unterlagplatte</h3>
+    <p>Aus dem Steigungswinkel λ = arctan(p / π·d₂) wird die nächstliegende Platte gewählt. Bei Linksgewinde (LH) ist der Winkel negativ.</p>
+    <div id="hilfe-archiv" hidden>
+      <h3>Zeichnungs-Archiv</h3>
+      <p>Oben über „Archiv" den Ordner mit den PDF-Zeichnungen wählen. Zu jedem Gewinde wird dort nach der Zeichnung gesucht, Namensschema <code>068-4.pdf</code> für M68×4 und <code>010-15.pdf</code> für M10×1,5.</p>
+      <p><button class="knopf" id="archiv-trennen">Ordner trennen</button></p>
+    </div>
+  </div>
+</dialog>
 
 <script>
-// ═══════════════════════════════════════════════════════════
-//  THEME
-// ═══════════════════════════════════════════════════════════
-function initTheme() {
-  try {
-    var saved = localStorage.getItem('amtec_theme');
-    var isLight = (saved !== 'dark');
-    document.body.classList.toggle('theme-light', isLight);
-    document.body.classList.toggle('light', isLight);
-    var lbl = document.getElementById('theme-label');
-    if (lbl) lbl.textContent = isLight ? 'Hell' : 'Dunkel';
-  } catch(e) {}
-}
-document.addEventListener('DOMContentLoaded', initTheme);
-
-function toggleTheme() {
-  var body = document.body;
-  // Backwards-compatibility: alte .light Klasse auch togglen falls vorhanden
-  body.classList.toggle('light');
-  var isLight = body.classList.toggle('theme-light');
-  // Stelle sicher dass beide Klassen synchron sind
-  if (isLight) {
-    body.classList.add('light');
-  } else {
-    body.classList.remove('light');
-  }
-  var lbl = document.getElementById('theme-label');
-  if (lbl) lbl.textContent = isLight ? 'Hell' : 'Dunkel';
-  try { localStorage.setItem('amtec_theme', isLight ? 'light' : 'dark'); } catch(e) {}
-}
-
 // ═══════════════════════════════════════════════════════════
 //  DIN 13 NORMGEWINDE (Nenn-Ø → Regelsteigung)
 // ═══════════════════════════════════════════════════════════
@@ -1477,703 +585,386 @@ function berechneGewinde(d, p) {
 }
 
 // ═══════════════════════════════════════════════════════════
-//  HTML AUFBAUEN — produktionsorientiert
+//  OBERFLÄCHE
+//  Breit (ab 900 px): Suchfeld + Blatt.  Schmal: Wähler + Arbeitsfolge.
+//  Beide zeigen denselben Zustand Z. Der Rechenkern oben ist unverändert.
 // ═══════════════════════════════════════════════════════════
-function renderResult(res) {
-  var d = res.d; var p = res.p;
+function $(id) { return document.getElementById(id); }
+function zahl(v) { return (Math.round(v * 1000) / 1000).toFixed(3); }
+function abmass(v) { return (v >= 0 ? '+' : '−') + Math.abs(Math.round(v * 1000) / 1000).toFixed(3); }
+function kurz(v) { return String(v).replace('.', ','); }
+function gewindeName(d, p) { return 'M' + kurz(d) + ' × ' + kurz(p); }
+function escapeHtml(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
-  // Print header
-  var handForPrint = (typeof threadHand !== 'undefined' && threadHand === 'LH') ? ' LH' : ' RH';
-  var viewForPrint = (typeof kpiView !== 'undefined' && kpiView === 'aussen') ? 'Außengewinde' : 'Innengewinde';
-  document.getElementById('print-header').innerHTML =
-    'amtec · Spannhydraulik GmbH — DIN 13 Gewindeberechnung M' + d + '×' + p + handForPrint + ' · ' + viewForPrint + ' — Ausdruck: ' + new Date().toLocaleDateString('de-DE');
-
-  var html = '';
-  var lambdaKpiInnen = '';   // wird unten in platteKpi() gefüllt
-  var lambdaKpiAussen = '';
-
-  // ── THREAD BADGE ──
-  var handLabel = res.hand === 'LH' ? 'LH' : 'RH';
-  var handFullText = res.hand === 'LH' ? 'Linksgewinde' : 'Rechtsgewinde';
-  var handBadgeColor = res.hand === 'LH' ? '#d4a020' : '#4fa3a5';
-  html += '<div class="thread-badge animate-in">';
-  html += '<div><div class="thread-badge-label">Gewinde</div><div class="thread-badge-value">M' + d + '</div></div>';
-  html += '<div class="thread-badge-sep"></div>';
-  html += '<div><div class="thread-badge-label">Steigung</div><div class="thread-badge-value">×' + p + '</div></div>';
-  html += '<div class="thread-badge-sep"></div>';
-  html += '<div><div class="thread-badge-label">Richtung</div><div class="thread-badge-value" style="color:' + handBadgeColor + ';font-size:42px">' + handLabel + '</div><div style="font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.5px;margin-top:2px">' + handFullText + '</div></div>';
-  html += '<div class="thread-badge-sep"></div>';
-  html += '<div class="thread-badge-detail"><div style="color:var(--text3);font-size:10px">Gewindetiefe h₃</div><div>' + fmm(res.h3) + ' mm</div></div>';
-  html += '<div class="thread-badge-sep"></div>';
-  html += '<div class="thread-badge-detail"><div style="color:var(--text3);font-size:10px">Profilhöhe H</div><div>' + fmm(res.H) + ' mm</div></div>';
-  html += '</div>';
-
-  // ── HERO PRODUKTIONSKACHELN (4 Stück im 2×2 Grid) ──
-  // Bolzen: d1_max (oberes Abmaß = nächste Untergrenze zum Nennmaß = max. erlaubtes Istmaß)
-  // Mutter: D1_max (größter erlaubter Kernlochbohrer = weite Toleranz)
-  // Mutter: Gewindetiefe = h3 (Bolzen-Gewindetiefe bestimmt den Gewindebohrer)
-
-  // ── Maße berechnen ──
-  // BOLZEN: Fertigungsziel = d1 MIN (unteres Abmaß = maximale Toleranz nach unten)
-  var bolt_d1_ZIEL = r4(d + res.td1[1]);   // ← FERTIGUNGSZIEL: unteres Abmaß
-  var bolt_d1_GRENZ = r4(d + res.td1[0]);  // oberes Abmaß (obere Grenze, nicht drehen bis hierhin)
-  var bolt_d1_tol_band = r4(Math.abs(res.td1[1] - res.td1[0]));  // Toleranzbreite
-
-  // MUTTER: Fertigungsziel = D1 MAX (oberes Abmaß = größtmögliches Kernloch)
-  var mut_D1_ZIEL = r4(res.D1max);    // ← FERTIGUNGSZIEL: max. Kernloch
-  var mut_D1_GRENZ = r4(res.D1min);   // untere Grenze
-
-  // Gewindetiefen — WORST CASE (tiefste mögliche Schnitttiefe)
-  var bolt_h3 = res.h3_worst;
-  var mut_H1 = res.H1;
-
-  // Hilfsfunktion: Mini-Balken
-  function tvBar(fillPct) {
-    return '<div class="tv-bar"><div class="tv-bar-fill" style="width:' + Math.min(100, fillPct) + '%"></div></div>';
-  }
-
-  html += '<div class="prod-kpi-grid animate-in" id="kpi-group-innen">';
-
-  // ══════════════════════════════════════════
-  // KACHEL 1 — Innengewinde · Kernloch-Ø
-  // ══════════════════════════════════════════
-  html += '<div class="prod-kpi">';
-  // Header-Streifen
-  html += '<div class="kpi-header">';
-  html += '<div class="kpi-header-left"><span class="kpi-num">01</span><span class="kpi-category">Innengewinde · Kernloch-Ø</span></div>';
-  html += '<span class="kpi-symbol">D₁</span>';
-  html += '</div>';
-  // Action + Hauptwert
-  html += '<div class="kpi-action">';
-  html += '<div class="kpi-action-verb">▸ Bohren auf</div>';
-  html += '<div class="kpi-value-row">';
-  html += '<span class="kpi-value green">' + fmm(mut_D1_ZIEL) + '</span>';
-  html += '<span class="kpi-unit">mm</span>';
-  html += '<span class="kpi-target-tag">ZIEL · MAX</span>';
-  html += '</div>';
-  html += '<div class="kpi-hint">Größtes zulässiges Kernloch — obere Toleranzgrenze ausnutzen</div>';
-  html += '</div>';
-  // Details-Sektion
-  html += '<div class="kpi-details">';
-  html += '<div class="kpi-detail-title">Toleranzbereich</div>';
-  html += '<div class="kpi-range">';
-  html += '<div class="kpi-range-side lo"><span class="kpi-range-cap">Min</span><span class="kpi-range-num">' + fmm(mut_D1_GRENZ) + '</span></div>';
-  html += '<div class="kpi-range-bar"><div class="kpi-range-bar-fill"></div><div class="kpi-range-bar-marker" style="right:0"></div></div>';
-  html += '<div class="kpi-range-side hi"><span class="kpi-range-cap">Max ◀</span><span class="kpi-range-num target">' + fmm(mut_D1_ZIEL) + '</span></div>';
-  html += '</div>';
-  html += '<div class="kpi-meta">';
-  html += '<div class="kpi-meta-item"><span class="kpi-meta-label">Toleranz</span><span class="kpi-meta-val accent">+' + fmm(res.D1_tol) + ' mm</span></div>';
-  html += '<div class="kpi-meta-item"><span class="kpi-meta-label">Lage</span><span class="kpi-meta-val">4H</span></div>';
-  html += '</div>';
-  html += '</div>';
-  html += '</div>';
-
-  // ══════════════════════════════════════════
-  // KACHEL 2 — Innengewinde · Gewindetiefe
-  // ══════════════════════════════════════════
-  html += '<div class="prod-kpi">';
-  html += '<div class="kpi-header">';
-  html += '<div class="kpi-header-left"><span class="kpi-num">02</span><span class="kpi-category">Innengewinde · Gewindetiefe</span></div>';
-  html += '<span class="kpi-symbol">H₁</span>';
-  html += '</div>';
-  html += '<div class="kpi-action">';
-  html += '<div class="kpi-action-verb">▸ Schneiden auf</div>';
-  html += '<div class="kpi-value-row">';
-  html += '<span class="kpi-value green">' + fmm(mut_H1) + '</span>';
-  html += '<span class="kpi-unit">mm</span>';
-  html += '<span class="kpi-target-tag">ZIEL · MAX</span>';
-  html += '</div>';
-  html += '<div class="kpi-hint">Maximale Schnitttiefe — Worst-Case der Toleranzen</div>';
-  html += '</div>';
-  html += '<div class="kpi-details">';
-  html += '<div class="kpi-detail-title">Bezugsmaße · Worst-Case-Tiefe</div>';
-  html += '<div class="kpi-range">';
-  html += '<div class="kpi-range-side lo"><span class="kpi-range-cap strong">D₁ max</span><span class="kpi-range-num highlight">' + fmm(mut_D1_ZIEL) + '</span></div>';
-  html += '<div class="kpi-range-bar"><div class="kpi-range-bar-fill"></div></div>';
-  html += '<div class="kpi-range-side hi"><span class="kpi-range-cap strong">D₃ max</span><span class="kpi-range-num highlight">' + fmm(res.D3max) + '</span></div>';
-  html += '</div>';
-  html += '<div class="kpi-meta">';
-  html += '<div class="kpi-meta-item"><span class="kpi-meta-label">Formel</span><span class="kpi-meta-val accent">(D₃max − D₁max) / 2</span></div>';
-  html += '<div class="kpi-meta-item"><span class="kpi-meta-label">Ergebnis</span><span class="kpi-meta-val">' + fmm(mut_H1) + ' mm</span></div>';
-  html += '</div>';
-  html += '</div>';
-  html += '</div>';
-  html += '<!--PLATTE_INNEN-->';
-  html += '</div>'; // end kpi-group-innen
-
-  html += '<div class="prod-kpi-grid kpi-hidden" id="kpi-group-aussen">';
-
-  // ══════════════════════════════════════════
-  // KACHEL 3 — Außengewinde · Außen-Ø
-  // ══════════════════════════════════════════
-  html += '<div class="prod-kpi">';
-  html += '<div class="kpi-header">';
-  html += '<div class="kpi-header-left"><span class="kpi-num">03</span><span class="kpi-category">Außengewinde · Außen-Ø</span></div>';
-  html += '<span class="kpi-symbol">d₁</span>';
-  html += '</div>';
-  html += '<div class="kpi-action">';
-  html += '<div class="kpi-action-verb">▸ Drehen auf</div>';
-  html += '<div class="kpi-value-row">';
-  html += '<span class="kpi-value green">' + fmm(bolt_d1_ZIEL) + '</span>';
-  html += '<span class="kpi-unit">mm</span>';
-  html += '<span class="kpi-target-tag">ZIEL · MIN</span>';
-  html += '</div>';
-  html += '<div class="kpi-hint">Kleinster zulässiger Außen-Ø — untere Toleranzgrenze ausnutzen</div>';
-  html += '</div>';
-  html += '<div class="kpi-details">';
-  html += '<div class="kpi-detail-title">Toleranzbereich</div>';
-  html += '<div class="kpi-range">';
-  html += '<div class="kpi-range-side lo"><span class="kpi-range-cap">Min ◀</span><span class="kpi-range-num target">' + fmm(bolt_d1_ZIEL) + '</span></div>';
-  html += '<div class="kpi-range-bar"><div class="kpi-range-bar-fill"></div><div class="kpi-range-bar-marker" style="left:0"></div></div>';
-  html += '<div class="kpi-range-side hi"><span class="kpi-range-cap">Obergrenze</span><span class="kpi-range-num">' + fmm(bolt_d1_GRENZ) + '</span></div>';
-  html += '</div>';
-  html += '<div class="kpi-meta">';
-  html += '<div class="kpi-meta-item"><span class="kpi-meta-label">Abmaß</span><span class="kpi-meta-val accent">' + ftol(res.td1[0]) + ' / ' + ftol(res.td1[1]) + '</span></div>';
-  html += '<div class="kpi-meta-item"><span class="kpi-meta-label">Lage</span><span class="kpi-meta-val">4h · ' + fmm(bolt_d1_tol_band) + ' mm</span></div>';
-  html += '</div>';
-  html += '</div>';
-  html += '</div>';
-
-  // ══════════════════════════════════════════
-  // KACHEL 4 — Außengewinde · Gewindetiefe
-  // ══════════════════════════════════════════
-  html += '<div class="prod-kpi">';
-  html += '<div class="kpi-header">';
-  html += '<div class="kpi-header-left"><span class="kpi-num">04</span><span class="kpi-category">Außengewinde · Gewindetiefe</span></div>';
-  html += '<span class="kpi-symbol">h₃</span>';
-  html += '</div>';
-  html += '<div class="kpi-action">';
-  html += '<div class="kpi-action-verb">▸ Schneiden auf</div>';
-  html += '<div class="kpi-value-row">';
-  html += '<span class="kpi-value green">' + fmm(bolt_h3) + '</span>';
-  html += '<span class="kpi-unit">mm</span>';
-  html += '<span class="kpi-target-tag">ZIEL · MAX</span>';
-  html += '</div>';
-  html += '<div class="kpi-hint">Maximale Schnitttiefe — Worst-Case der Toleranzen</div>';
-  html += '</div>';
-  html += '<div class="kpi-details">';
-  html += '<div class="kpi-detail-title">Bezugsmaße · Worst-Case-Tiefe</div>';
-  html += '<div class="kpi-range">';
-  html += '<div class="kpi-range-side lo"><span class="kpi-range-cap strong">d₃ min</span><span class="kpi-range-num highlight">' + fmm(res.d3_min_h3) + '</span></div>';
-  html += '<div class="kpi-range-bar"><div class="kpi-range-bar-fill"></div></div>';
-  html += '<div class="kpi-range-side hi"><span class="kpi-range-cap strong">d₁ Ziel</span><span class="kpi-range-num highlight target">' + fmm(bolt_d1_ZIEL) + '</span></div>';
-  html += '</div>';
-  html += '<div class="kpi-meta">';
-  html += '<div class="kpi-meta-item"><span class="kpi-meta-label">Formel</span><span class="kpi-meta-val accent">(d₁min − d₃min) / 2</span></div>';
-  html += '<div class="kpi-meta-item"><span class="kpi-meta-label">Ergebnis</span><span class="kpi-meta-val">' + fmm(bolt_h3) + ' mm</span></div>';
-  html += '</div>';
-  html += '</div>';
-  html += '</div>';
-
-  html += '<!--PLATTE_AUSSEN-->';
-  html += '</div>'; // end kpi-group-aussen
-
-  // ══════════════════════════════════════════════════════════
-  // STEIGUNGSWINKEL + UNTERLAGPLATTEN-EMPFEHLUNG
-  // ══════════════════════════════════════════════════════════
-  var lam = res.lambda;          // vorzeichenbehafteter Winkel (LH = negativ)
-  var lamAbs = res.lambda_abs;   // Betrag
-  var handTxt = res.hand === 'LH' ? 'LH · Links' : 'RH · Rechts';
-
-  // Kompakte Platten-KPI als Funktion (für innen + außen getrennt)
-  // typ: 'innen' (IR/EL) oder 'aussen' (ER/IL)
-  function platteKpi(typ) {
-    var istInnen = (typ === 'innen');
-    var labelCode = istInnen ? 'IR / EL' : 'ER / IL';
-    var labelText = istInnen ? 'Innengewinde' : 'Außengewinde';
-    var symFarbe = istInnen ? 'var(--teal)' : 'var(--accent)';
-    var s = '';
-    s += '<div class="prod-kpi">';
-    // Header
-    s += '<div class="kpi-header">';
-    s += '<div class="kpi-header-left"><span class="kpi-num">λ</span><span class="kpi-category">Unterlagplatte · ' + labelText + '</span></div>';
-    s += '<span class="kpi-symbol" style="font-size:14px;color:' + symFarbe + '">' + labelCode + '</span>';
-    s += '</div>';
-    // Action + großer Plattenwert
-    s += '<div class="kpi-action">';
-    s += '<div class="kpi-action-verb">▸ Unterlagplatte wählen</div>';
-    s += '<div class="kpi-value-row">';
-    s += '<span class="kpi-value" style="color:' + res.platte_farbe + '">' + res.platte_winkel + '</span>';
-    s += '<span class="kpi-target-tag" style="background:' + res.platte_farbe + '22;color:' + res.platte_farbe + ';border-color:' + res.platte_farbe + '">' + handTxt + '</span>';
-    s += '</div>';
-    s += '<div class="kpi-hint">Kompensationswinkel der Zwischenlage für ' + labelText + '</div>';
-    s += '</div>';
-    // Details: λ-Wert + Differenz
-    s += '<div class="kpi-details">';
-    s += '<div class="kpi-detail-title">Berechneter Steigungswinkel</div>';
-    s += '<div class="kpi-range">';
-    s += '<div class="kpi-range-side lo"><span class="kpi-range-cap strong">λ berechnet</span><span class="kpi-range-num highlight" style="color:' + res.platte_farbe + '">' + lam.toFixed(2) + '°</span></div>';
-    s += '<div class="kpi-range-bar"><div class="kpi-range-bar-fill" style="background:' + res.platte_farbe + '"></div></div>';
-    s += '<div class="kpi-range-side hi"><span class="kpi-range-cap strong">Platte</span><span class="kpi-range-num highlight">' + res.platte_winkel + '</span></div>';
-    s += '</div>';
-    s += '<div class="kpi-meta">';
-    s += '<div class="kpi-meta-item"><span class="kpi-meta-label">Abweichung</span><span class="kpi-meta-val">' + res.platte_zone + '</span></div>';
-    s += '<div class="kpi-meta-item"><span class="kpi-meta-label">Formel</span><span class="kpi-meta-val accent">arctan(p / π·d₂)</span></div>';
-    s += '</div>';
-    s += '</div>';
-    s += '</div>';
-    return s;
-  }
-
-  lambdaKpiInnen = platteKpi('innen');
-  lambdaKpiAussen = platteKpi('aussen');
-  // Platzhalter in den Gruppen durch die Platten-Kacheln ersetzen
-  html = html.replace('<!--PLATTE_INNEN-->', lambdaKpiInnen);
-  html = html.replace('<!--PLATTE_AUSSEN-->', lambdaKpiAussen);
-
-  html += '<button class="collapsible-toggle" onclick="toggleCollapsible(\'bolt-detail\')">';
-  html += '<span>▸ Bolzen (Außengewinde) — Alle Toleranzmaße</span>';
-  html += '<span class="toggle-arrow">▾</span>';
-  html += '</button>';
-  html += '<div class="collapsible-body" id="bolt-detail">';
-  html += '<table class="result-table">';
-  html += '<thead><tr><th>Parameter</th><th>Symbol</th><th>Nennmaß</th><th>Abmaß oben</th><th>Abmaß unten</th><th>Max. Ist-Maß</th><th>Min. Ist-Maß</th><th>Lage</th></tr></thead>';
-  html += '<tbody>';
-  html += detailBoltRow('Außen-Ø', 'd₁', fmm(res.d1), res.td1[0], res.td1[1], '4h');
-  html += detailBoltRow('Kern-Ø', 'd₃', fmm(res.d3), res.td3[0], res.td3[1], '7h');
-  html += '</tbody></table>';
-  html += '<div style="margin-top:8px;font-size:10px;color:var(--text3)">Flanken-Ø d₂ = ' + fmm(res.d2) + ' mm (7e) — nicht messbar, daher nicht aufgeführt</div>';
-  html += '</div>';
-
-  // ── AUFKLAPPBAR 2: Mutter Details ──
-  html += '<button class="collapsible-toggle" onclick="toggleCollapsible(\'nut-detail\')">';
-  html += '<span>▸ Mutter (Innengewinde, AMTEC) — Alle Toleranzmaße</span>';
-  html += '<span class="toggle-arrow">▾</span>';
-  html += '</button>';
-  html += '<div class="collapsible-body" id="nut-detail">';
-  html += '<table class="result-table">';
-  html += '<thead><tr><th>Parameter</th><th>Symbol</th><th>Min. Ist-Maß</th><th>Max. Ist-Maß</th><th>Toleranz</th><th>Lage</th></tr></thead>';
-  html += '<tbody>';
-  html += detailNutRow('Außen-Ø', 'D₃', fmm(res.D3min), fmm(res.D3max), '+' + fmm(res.D3_tol), 'H10');
-  html += detailNutRow('Kern-Ø (Kernloch)', 'D₁', fmm(res.D1min), fmm(res.D1max), '+' + fmm(res.D1_tol), '4H');
-  html += '</tbody></table>';
-  html += '<div style="margin-top:8px;font-size:10px;color:var(--text3)">Flanken-Ø D₂ min = ' + fmm(res.D2min) + ' mm, max = ' + fmm(res.D2max) + ' mm (7H, AMTEC 2/3) — nicht messbar</div>';
-  html += '<div style="margin-top:4px;font-size:10px;color:var(--text3)">AMTEC reduziert DIN 7H-Toleranz auf 2/3 für sichere Aufschraubbarkeit.</div>';
-  html += '</div>';
-
-  // ── AUFKLAPPBAR 3: Zahngeometrie ──
-  html += '<button class="collapsible-toggle" onclick="toggleCollapsible(\'geo-detail\')">';
-  html += '<span>▸ Zahngeometrie — Nennmaße und Grundprofil</span>';
-  html += '<span class="toggle-arrow">▾</span>';
-  html += '</button>';
-  html += '<div class="collapsible-body" id="geo-detail">';
-  html += '<table class="result-table">';
-  html += '<thead><tr><th>Parameter</th><th>Symbol</th><th>Wert</th><th>Formel</th></tr></thead>';
-  html += '<tbody>';
-  html += geoRow('Profildreieckhöhe', 'H', fmm(res.H) + ' mm', 'p · √3 / 2');
-  html += geoRow('Gewindetiefe Bolzen', 'h₃', fmm(res.h3) + ' mm', '0,6134 · p');
-  html += geoRow('Gewindetiefe Mutter', 'H₁', fmm(res.H1) + ' mm', '0,5412 · p');
-  html += geoRow('Zahnbreite am Außen-Ø', 'b', fmm(res.b) + ' mm', 'p / 8');
-  html += geoRow('Zahnbreite am Flanken-Ø', 'b₂', fmm(res.b2) + ' mm', 'p / 2');
-  html += geoRow('Rundungsradius Bolzen min.', 'R₁ min', fmm(res.R1min) + ' mm', 'p / 8');
-  html += geoRow('Rundungsradius Bolzen max.', 'R₁ max', fmm(res.R1max) + ' mm', 'p / (4√3)');
-  html += geoRow('Flanken-Ø Bolzen', 'd₂', fmm(res.d2) + ' mm', 'd − (3/4)·√3·p');
-  html += geoRow('Flanken-Ø Mutter min.', 'D₂', fmm(res.D2min) + ' mm', 'D₃min − 0,72167·p');
-  html += '</tbody></table>';
-  html += '</div>';
-
-  document.getElementById('result-area').innerHTML = html;
-  applyKpiView();
+function regelsteigung(d) {
+  for (var i = 0; i < DIN13_NORM.length; i++) if (DIN13_NORM[i][0] === d) return DIN13_NORM[i][1];
+  return null;
+}
+/* „M24", „24x2", „m 24 × 1,5" → {d, p} · {fehler} bei erkennbar falscher Eingabe · null, wenn es kein Gewinde ist */
+function lesen(text) {
+  var m = /^\s*m?\s*(\d+(?:[.,]\d+)?)\s*(?:[x×*]\s*(\d+(?:[.,]\d+)?))?\s*$/i.exec(text || '');
+  if (!m) return null;
+  var d = parseFloat(m[1].replace(',', '.'));
+  var p = m[2] ? parseFloat(m[2].replace(',', '.')) : regelsteigung(d);
+  if (!(d > 0)) return null;
+  if (!p) return { fehler: 'M' + kurz(d) + ' hat keine Regelsteigung. Steigung mit angeben, z. B. ' + kurz(d) + 'x2' };
+  return pruefen(d, p);
+}
+function pruefen(d, p) {
+  if (!(d > 0) || !(p > 0)) return { fehler: 'Bitte gültige Werte für Nenndurchmesser und Steigung eingeben.' };
+  if (d < p * 2) return { fehler: 'Steigung darf nicht größer als der halbe Nenndurchmesser sein.' };
+  return { d: d, p: p };
+}
+/* Der Kern nimmt bei Steigungen außerhalb der Toleranztabelle still die nächstliegende. Das wird angezeigt. */
+function tabellenSteigung(p) {
+  var k = Object.keys(BOLT_D1).map(Number);
+  if (k.indexOf(p) >= 0) return null;
+  return k.reduce(function (a, b) { return Math.abs(b - p) < Math.abs(a - p) ? b : a; });
 }
 
-function detailBoltRow(name, sym, nom, tol_hi, tol_lo, qual) {
-  var max_ist = r4(parseFloat(nom) + tol_hi).toFixed(4);
-  var min_ist = r4(parseFloat(nom) + tol_lo).toFixed(4);
-  return '<tr>' +
-    '<td class="col-name">' + name + '</td>' +
-    '<td class="col-sym">' + sym + '</td>' +
-    '<td class="col-val">' + nom + '</td>' +
-    '<td class="col-val" style="color:#d4a020">' + ftol(tol_hi) + '</td>' +
-    '<td class="col-val" style="color:#e07070">' + ftol(tol_lo) + '</td>' +
-    '<td class="col-val" style="color:#5aaa6a">' + max_ist + '</td>' +
-    '<td class="col-val">' + min_ist + '</td>' +
-    '<td class="col-qual">' + qual + '</td>' +
-    '</tr>';
+// ── Zustand ──
+var threadHand = 'RH';   // liest der Rechenkern
+var Z = { g: null, seite: 'innen', hand: 'RH', verlauf: [], wahl: 0, fehler: '', zeichnung: null };
+function speichern() {
+  try { localStorage.setItem('din13_zustand', JSON.stringify({ g: Z.g, seite: Z.seite, hand: Z.hand, verlauf: Z.verlauf })); } catch (e) {}
 }
-
-function detailNutRow(name, sym, min_val, max_val, tol, qual) {
-  return '<tr>' +
-    '<td class="col-name">' + name + '</td>' +
-    '<td class="col-sym">' + sym + '</td>' +
-    '<td class="col-val">' + min_val + '</td>' +
-    '<td class="col-val" style="color:#5aaa6a">' + max_val + '</td>' +
-    '<td class="col-val" style="color:#d4a020">' + tol + '</td>' +
-    '<td class="col-qual">' + qual + '</td>' +
-    '</tr>';
-}
-
-function geoRow(name, sym, val, formula) {
-  return '<tr>' +
-    '<td class="col-name">' + name + '</td>' +
-    '<td class="col-sym">' + sym + '</td>' +
-    '<td class="col-val">' + val + '</td>' +
-    '<td style="font-family:var(--mono);font-size:11px;color:var(--text3);text-align:right">' + formula + '</td>' +
-    '</tr>';
-}
-
-function sectionHead(num, title) {
-  return '<div class="section-head"><span class="section-num">' + num + '</span>' +
-    '<span class="section-title">' + title + '</span><span class="section-line"></span></div>';
-}
-
-function toggleCollapsible(id) {
-  var body = document.getElementById(id);
-  var btn = body.previousElementSibling;
-  if (body.classList.contains('open')) {
-    body.classList.remove('open');
-    btn.classList.remove('open');
-  } else {
-    body.classList.add('open');
-    btn.classList.add('open');
-  }
-}
-
-// ═══════════════════════════════════════════════════════════
-//  DROPDOWN BEFÜLLEN
-// ═══════════════════════════════════════════════════════════
-function fillDropdown() {
-  var sel = document.getElementById('sel-norm');
-  for (var i = 0; i < DIN13_NORM.length; i++) {
-    var d = DIN13_NORM[i][0];
-    var p = DIN13_NORM[i][1];
-    var opt = document.createElement('option');
-    opt.value = d + '|' + p;
-    opt.textContent = 'M' + d + ' × ' + p + ' mm  (Regelsteigung)';
-    sel.appendChild(opt);
-  }
-}
-
-// ═══════════════════════════════════════════════════════════
-//  EVENTS
-// ═══════════════════════════════════════════════════════════
-function onNormChange() {
-  var sel = document.getElementById('sel-norm');
-  var val = sel.value;
-  if (!val) return;
-  var parts = val.split('|');
-  document.getElementById('inp-d').value = parts[0];
-  document.getElementById('inp-p').value = parts[1];
-}
-
-function onManualInput() {
-  document.getElementById('sel-norm').value = '';
-}
-
-// Globaler Zustand für Gewinderichtung
-var threadHand = 'RH';
-
-// Globaler Zustand für KPI-Ansicht (innen/aussen)
-var kpiView = 'innen';
-
-function setKpiView(view) {
-  kpiView = view;
-  var btns = document.querySelectorAll('.view-btn');
-  for (var i = 0; i < btns.length; i++) {
-    if (btns[i].getAttribute('data-view') === view) {
-      btns[i].classList.add('active');
-    } else {
-      btns[i].classList.remove('active');
-    }
-  }
-  applyKpiView();
-}
-
-// Wendet den aktuellen Ansichts-Zustand auf die gerenderten Gruppen an
-function applyKpiView() {
-  var innen = document.getElementById('kpi-group-innen');
-  var aussen = document.getElementById('kpi-group-aussen');
-  if (innen) {
-    if (kpiView === 'innen') innen.classList.remove('kpi-hidden');
-    else innen.classList.add('kpi-hidden');
-  }
-  if (aussen) {
-    if (kpiView === 'aussen') aussen.classList.remove('kpi-hidden');
-    else aussen.classList.add('kpi-hidden');
-  }
-}
-
-function setHand(h) {
-  threadHand = h;
-  var btns = document.querySelectorAll('.hand-btn');
-  for (var i = 0; i < btns.length; i++) {
-    if (btns[i].getAttribute('data-hand') === h) {
-      btns[i].classList.add('active');
-    } else {
-      btns[i].classList.remove('active');
-    }
-  }
-  // Neu rechnen falls bereits Ergebnis vorhanden
-  var dV = parseFloat(document.getElementById('inp-d').value);
-  var pV = parseFloat(document.getElementById('inp-p').value);
-  if (!isNaN(dV) && !isNaN(pV) && dV > 0 && pV > 0 && dV >= pV * 2) {
-    var result = berechneGewinde(dV, pV);
-    renderResult(result);
-  }
-}
-
-function berechnen() {
-  var dVal = parseFloat(document.getElementById('inp-d').value);
-  var pVal = parseFloat(document.getElementById('inp-p').value);
-
-  if (isNaN(dVal) || isNaN(pVal) || dVal <= 0 || pVal <= 0) {
-    document.getElementById('result-area').innerHTML =
-      '<div class="error-box">⚠ Bitte gültige Werte für Nenndurchmesser und Steigung eingeben.</div>';
-    return;
-  }
-  if (dVal < pVal * 2) {
-    document.getElementById('result-area').innerHTML =
-      '<div class="error-box">⚠ Steigung darf nicht größer als der halbe Nenndurchmesser sein.</div>';
-    return;
-  }
-
-  var result = berechneGewinde(dVal, pVal);
-  renderResult(result);
-  // Nach dem Rendern Zeichnung suchen (asynchron, blockiert nicht)
-  checkDrawingAvailability(dVal, pVal);
-}
-
-function druckenAuslösen() {
-  // Im Tauri-Webview den nativen Druck-Command verwenden, sonst window.print()
-  if (typeof window.__TAURI__ !== 'undefined') {
-    window.__TAURI__.invoke('print_window').catch(function(err) {
-      console.error('Tauri print failed, fallback:', err);
-      window.print();
-    });
-  } else {
-    window.print();
-  }
-}
-
-function zuruecksetzen() {
-  document.getElementById('sel-norm').value = '';
-  document.getElementById('inp-d').value = '';
-  document.getElementById('inp-p').value = '';
-  document.getElementById('result-area').innerHTML =
-    '<div class="placeholder">' +
-    '<div class="ph-icon">⌀</div>' +
-    '<div class="ph-title">Gewinde wählen und berechnen</div>' +
-    '<div class="ph-sub">Wähle ein Normgewinde aus dem Dropdown oder gib Nenndurchmesser und Steigung manuell ein.</div>' +
-    '</div>';
-}
-
-// ═══════════════════════════════════════════════════════════
-//  ZEICHNUNGS-ARCHIV (Tauri Bridge)
-// ═══════════════════════════════════════════════════════════
-var drawingFolder = null;  // gespeicherter Ordnerpfad
-var TAURI_AVAILABLE = (typeof window.__TAURI__ !== 'undefined');
-
-function isTauri() {
-  return TAURI_AVAILABLE;
-}
-
-function loadSavedFolder() {
+function laden() {
   try {
-    var saved = localStorage.getItem('amtec_drawing_folder');
-    if (saved) {
-      drawingFolder = saved;
-      updateFolderStatus();
-      // Validieren ob noch existiert
-      if (isTauri()) {
-        window.__TAURI__.invoke('validate_folder', { path: saved }).then(function(valid) {
-          if (!valid) {
-            drawingFolder = null;
-            localStorage.removeItem('amtec_drawing_folder');
-            updateFolderStatus();
-          }
-        });
-      }
+    var s = JSON.parse(localStorage.getItem('din13_zustand') || 'null');
+    if (s) {
+      if (s.g && !pruefen(s.g.d, s.g.p).fehler) Z.g = { d: s.g.d, p: s.g.p };
+      if (s.seite === 'aussen') Z.seite = 'aussen';
+      if (s.hand === 'LH') Z.hand = 'LH';
+      if (Array.isArray(s.verlauf)) Z.verlauf = s.verlauf.filter(function (v) { return v && v.length === 2 && !pruefen(v[0], v[1]).fehler; }).slice(0, 6);
     }
-  } catch (e) {
-    console.warn('Kein localStorage-Zugriff:', e);
-  }
+  } catch (e) {}
+  /* Adresse mit ?g=M24x3 öffnet direkt dieses Gewinde */
+  var q = new URLSearchParams(location.search), g = lesen(q.get('g') || '');
+  if (g && !g.fehler) Z.g = g;
+  if (q.get('seite') === 'aussen' || q.get('seite') === 'innen') Z.seite = q.get('seite');
+  if (q.get('hand') === 'LH' || q.get('hand') === 'RH') Z.hand = q.get('hand');
+}
+function merken() {
+  if (!Z.g) return;
+  var d = Z.g.d, p = Z.g.p;
+  Z.verlauf = Z.verlauf.filter(function (v) { return !(v[0] === d && v[1] === p); });
+  Z.verlauf.unshift([d, p]);
+  Z.verlauf = Z.verlauf.slice(0, 6);
+  speichern();
+}
+var merkUhr;
+/* sofort = bewusste Wahl (Enter, Antippen). Beim Durchblättern mit + / − erst merken, wenn man stehen bleibt. */
+function waehle(d, p, sofort) {
+  Z.g = { d: d, p: p }; Z.fehler = ''; Z.zeichnung = null;
+  clearTimeout(merkUhr);
+  if (sofort) merken(); else { speichern(); merkUhr = setTimeout(function () { merken(); zeichne(); }, 1200); }
+  zeichne();
+  zeichnungSuchen();
 }
 
-function selectDrawingFolder() {
-  if (!isTauri()) {
-    alert('Diese Funktion ist nur in der Desktop-App verfügbar.');
+// ── Fertigungsziele je Seite, in Arbeitsreihenfolge ──
+function ziele(r, seite) {
+  /* Der Kern meldet die Standardplatte als „Standard (1.5°)". Groß steht nur der Winkel, „Standard" als Marke. */
+  var std = r.platte_winkel.indexOf('Standard') === 0;
+  var platte = {
+    verb: 'Unterlagplatte', sym: 'λ', wert: std ? '1.5°' : r.platte_winkel, einheit: '',
+    marke: (std ? 'Standard · ' : '') + (seite === 'innen' ? 'IR / EL' : 'ER / IL'),
+    zeile: 'Steigungswinkel ' + r.lambda.toFixed(2) + '° · ' + r.platte_zone
+  };
+  if (seite === 'innen') return [
+    { verb: 'Kernloch bohren auf', sym: 'D₁ max', wert: zahl(r.D1max), einheit: 'mm', marke: '4H',
+      ziel: 'bis', zeile: 'zulässig ' + zahl(r.D1min) + ' bis ' + zahl(r.D1max) },
+    { verb: 'Gewinde schneiden, Tiefe', sym: 'H₁', wert: zahl(r.H1), einheit: 'mm', marke: 'größte Tiefe',
+      zeile: '(D₃ max ' + zahl(r.D3max) + ' − D₁ max ' + zahl(r.D1max) + ') / 2' },
+    platte
+  ];
+  /* Achtung Kern-Benennung: r.d1max = d + unteres Abmaß (kleinstes Maß, das Drehziel), r.d1min = d + oberes Abmaß */
+  return [
+    { verb: 'Außen-Ø drehen auf', sym: 'd₁ min', wert: zahl(r.d1max), einheit: 'mm', marke: '4h',
+      ziel: 'von', zeile: 'zulässig ' + zahl(r.d1max) + ' bis ' + zahl(r.d1min) },
+    { verb: 'Gewinde schneiden, Tiefe', sym: 'h₃', wert: zahl(r.h3_worst), einheit: 'mm', marke: 'größte Tiefe',
+      zeile: '(d₁ min ' + zahl(r.d1_min_h3) + ' − d₃ min ' + zahl(r.d3_min_h3) + ') / 2' },
+    platte
+  ];
+}
+function tabelleMutter(r) {
+  return '<table class="masse"><thead><tr><th>Maß</th><th></th><th class="z">Min</th><th class="z">Max</th><th class="z">Toleranz</th><th>Lage</th></tr></thead><tbody>' +
+    '<tr class="ziel"><td>Kern-Ø</td><td class="sym">D₁</td><td class="z">' + zahl(r.D1min) + '</td><td class="z"><b>' + zahl(r.D1max) + '</b></td><td class="z">+' + zahl(r.D1_tol) + '</td><td class="sym">4H</td></tr>' +
+    '<tr><td>Flanken-Ø</td><td class="sym">D₂</td><td class="z">' + zahl(r.D2min) + '</td><td class="z">' + zahl(r.D2max) + '</td><td class="z">+' + zahl(r.D2_tol) + '</td><td class="sym">7H · 2/3</td></tr>' +
+    '<tr><td>Außen-Ø</td><td class="sym">D₃</td><td class="z">' + zahl(r.D3min) + '</td><td class="z">' + zahl(r.D3max) + '</td><td class="z">+' + zahl(r.D3_tol) + '</td><td class="sym">H10</td></tr>' +
+    '</tbody></table>';
+}
+function tabelleBolzen(r) {
+  function z(n, s, nenn, t, lage, ziel) {
+    return '<tr' + (ziel ? ' class="ziel"' : '') + '><td>' + n + '</td><td class="sym">' + s + '</td><td class="z">' + (ziel ? '<b>' : '') + zahl(nenn + t[1]) + (ziel ? '</b>' : '') +
+      '</td><td class="z">' + zahl(nenn + t[0]) + '</td><td class="z">' + abmass(t[0]) + ' / ' + abmass(t[1]) + '</td><td class="sym">' + lage + '</td></tr>';
+  }
+  return '<table class="masse"><thead><tr><th>Maß</th><th></th><th class="z">Min</th><th class="z">Max</th><th class="z">Abmaße</th><th>Lage</th></tr></thead><tbody>' +
+    z('Außen-Ø', 'd₁', r.d1, r.td1, '4h', true) + z('Flanken-Ø', 'd₂', r.d2, r.td2, '7e') + z('Kern-Ø', 'd₃', r.d3, r.td3, '7h') + '</tbody></table>';
+}
+function tabelleProfil(r) {
+  var z = [['Profildreieckhöhe', 'H', zahl(r.H), 'p · √3 / 2'], ['Gewindetiefe Bolzen', 'h₃', zahl(r.h3), '0,6134 · p'],
+    ['Gewindetiefe Mutter', 'H₁', zahl(r.H1), '(D₃ max − D₁ max) / 2'],
+    ['Zahnbreite am Außen-Ø', 'b', zahl(r.b), 'p / 8'], ['Zahnbreite am Flanken-Ø', 'b₂', zahl(r.b2), 'p / 2'],
+    ['Rundungsradius Bolzen', 'R₁', zahl(r.R1min) + ' – ' + zahl(r.R1max), 'p / 8 bis p / (4√3)']];
+  return '<table class="masse"><tbody>' + z.map(function (x) {
+    return '<tr><td>' + x[0] + '</td><td class="sym">' + x[1] + '</td><td class="z">' + x[2] + '</td><td class="sym">' + x[3] + '</td></tr>';
+  }).join('') + '</tbody></table>';
+}
+function karte(titel, rechts, inhalt, fuss, klasse) {
+  return '<section class="karte' + (klasse ? ' ' + klasse : '') + '"><header><b>' + titel + '</b><span>' + rechts + '</span></header>' + inhalt + (fuss ? '<div class="herkunft">' + fuss + '</div>' : '') + '</section>';
+}
+function warnText() {
+  var ts = Z.g ? tabellenSteigung(Z.g.p) : null;
+  return ts === null ? '' : 'Steigung ' + kurz(Z.g.p) + ' steht nicht in der Toleranztabelle. Gerechnet ist mit den Abmaßen der Steigung ' + kurz(ts) + '.';
+}
+
+// ── Zeichnen ──
+function zeichne() {
+  document.querySelectorAll('[data-schalter]').forEach(function (el) {
+    [].forEach.call(el.children, function (b) { b.classList.toggle('an', b.dataset.w === Z[el.dataset.schalter]); });
+  });
+  var r = null, regel = false, innen = Z.seite === 'innen';
+  if (Z.g) { threadHand = Z.hand; r = berechneGewinde(Z.g.d, Z.g.p); regel = regelsteigung(Z.g.d) === Z.g.p; }
+  zeichneBreit(r, regel, innen);
+  zeichneSchmal(r, regel, innen);
+  zeichneLade(r);
+}
+function zeichneBreit(r, regel, innen) {
+  $('spur').innerHTML = '<span class="klein-gross">Zuletzt</span>' + (Z.verlauf.length ? Z.verlauf.map(function (v) {
+    var an = Z.g && Z.g.d === v[0] && Z.g.p === v[1];
+    return '<button class="pin' + (an ? ' an' : '') + '" data-d="' + v[0] + '" data-p="' + v[1] + '">' + gewindeName(v[0], v[1]) + '</button>';
+  }).join('') : '<span style="font-size:12.5px;color:var(--text4)">noch nichts gerechnet</span>');
+  if (!r) {
+    $('breit').innerHTML = '<div class="leer">Gewinde oben eintippen und Enter drücken. Oder ein Regelgewinde anklicken:<div class="wahl">' +
+      [8, 10, 12, 16, 20, 24, 30, 36, 42, 48, 56, 64].map(function (d) { return '<button class="pin" data-d="' + d + '" data-p="' + regelsteigung(d) + '">M' + d + '</button>'; }).join('') + '</div></div>';
     return;
   }
-  window.__TAURI__.dialog.open({
-    directory: true,
-    multiple: false,
-    title: 'Zeichnungs-Ordner wählen'
-  }).then(function(selected) {
-    if (selected && typeof selected === 'string') {
-      drawingFolder = selected;
-      try { localStorage.setItem('amtec_drawing_folder', selected); } catch(e){}
-      updateFolderStatus();
-      // Falls bereits ein Ergebnis vorhanden ist, sofort nachschauen
-      var dV = parseFloat(document.getElementById('inp-d').value);
-      var pV = parseFloat(document.getElementById('inp-p').value);
-      if (!isNaN(dV) && !isNaN(pV) && dV > 0 && pV > 0) {
-        checkDrawingAvailability(dV, pV);
-      }
-    }
-  }).catch(function(err) {
-    console.error('Folder selection error:', err);
-  });
+  var reihen = ziele(r, Z.seite).map(function (z) {
+    var band = z.ziel ? '<div class="band"><i></i><b style="' + (z.ziel === 'bis' ? 'right:0' : 'left:0') + '"></b></div>' : '';
+    return '<div class="zielreihe"><div class="verb">' + z.verb + '</div><div class="wert">' + z.wert + (z.einheit ? '<small>' + z.einheit + '</small>' : '') + '</div>' +
+      '<div class="marken"><span class="chip teal">' + z.sym + '</span><span class="chip">' + z.marke + '</span></div>' + band + '<div class="zeile">' + z.zeile + '</div></div>';
+  }).join('');
+  var w = warnText();
+  var zielKarte = '<section class="karte ziele"><header><b>Fertigungsziele</b><span>' + (innen ? 'Mutter' : 'Bolzen') + '</span></header><div class="reihen">' + reihen + '</div>' +
+    (w ? '<div class="herkunft warn">' + w + '</div>' : '') + '<div class="herkunft">DIN 13 · größte zulässige Toleranz ausgenutzt</div></section>';
+  var mutter = karte('Mutter · Innengewinde', 'alle Maße in mm', tabelleMutter(r), 'amtec: 7H auf 2/3 verkleinert · Flanken-Ø nicht messbar');
+  var bolzen = karte('Bolzen · Außengewinde', 'alle Maße in mm', tabelleBolzen(r), 'Flanken-Ø nicht messbar');
+  var handText = Z.hand === 'LH' ? 'LH · Linksgewinde' : 'RH · Rechtsgewinde', seiteText = innen ? 'Innengewinde · Mutter' : 'Außengewinde · Bolzen';
+  $('breit').innerHTML =
+    '<div id="druckkopf">amtec · Spannhydraulik GmbH — DIN 13 Gewindeberechnung ' + gewindeName(Z.g.d, Z.g.p) + ' ' + Z.hand + ' · ' + (innen ? 'Innengewinde' : 'Außengewinde') + ' — Ausdruck: ' + new Date().toLocaleDateString('de-DE') + '</div>' +
+    '<div class="titel"><h1>' + gewindeName(Z.g.d, Z.g.p) + '</h1><span class="chip' + (regel ? ' teal' : '') + '">' + (regel ? 'Regelgewinde' : 'eigene Steigung') + '</span>' +
+    '<span class="chip">' + handText + '</span><span class="chip">' + seiteText + '</span></div>' +
+    '<div class="raster"><div class="stapel">' + zielKarte + '<div id="zeichnung-platz">' + zeichnungKarte() + '</div></div>' +
+    '<div class="stapel">' + (innen ? mutter + bolzen : bolzen + mutter) + karte('Grundprofil', 'Nennmaße in mm', tabelleProfil(r)) + '</div></div>';
 }
-
-function clearDrawingFolder() {
-  drawingFolder = null;
-  try { localStorage.removeItem('amtec_drawing_folder'); } catch(e){}
-  updateFolderStatus();
-  // Existierende Drawing-Karte entfernen
-  var existing = document.getElementById('drawing-card');
-  if (existing) existing.remove();
-}
-
-function updateFolderStatus() {
-  // 1. Header-Status-Pill aktualisieren (ATLAS-Stil)
-  var headerStatus = document.getElementById('header-status');
-  if (headerStatus) {
-    if (drawingFolder) {
-      var displayPath = drawingFolder;
-      if (displayPath.length > 50) {
-        displayPath = '…' + displayPath.substr(displayPath.length - 48);
-      }
-      headerStatus.innerHTML =
-        '<span class="status-dot"></span>' +
-        '<span class="status-text" title="' + escapeHtml(drawingFolder) + '">' + escapeHtml(displayPath) + '</span>';
-    } else {
-      headerStatus.innerHTML =
-        '<span class="status-dot off"></span>' +
-        '<span class="status-text">Kein Ordner verbunden</span>';
-    }
+function zeichneSchmal(r, regel, innen) {
+  var aktiv = document.activeElement;
+  if (aktiv !== $('in-d')) $('in-d').value = Z.g ? Z.g.d : '';
+  if (aktiv !== $('in-p')) $('in-p').value = Z.g ? Z.g.p : '';
+  var chip = $('regel');
+  chip.hidden = !Z.g;
+  if (Z.g) {
+    var rs = regelsteigung(Z.g.d);
+    chip.textContent = regel ? 'Regelgewinde ' + gewindeName(Z.g.d, Z.g.p) : 'eigene Steigung · ' + (rs ? 'Regel wäre ' + kurz(rs) : 'kein Regelgewinde');
+    chip.className = 'chip regel' + (regel ? ' teal' : '');
   }
-
-  // 2. Sidebar-Status (falls vorhanden) auch aktualisieren
-  var statusEl = document.getElementById('drawing-folder-status');
-  var clearBtn = document.getElementById('btn-clear-folder');
-  if (statusEl) {
-    if (drawingFolder) {
-      var displayPath2 = drawingFolder;
-      if (displayPath2.length > 32) {
-        displayPath2 = '…' + displayPath2.substr(displayPath2.length - 30);
-      }
-      statusEl.innerHTML =
-        '<span class="folder-dot on"></span>' +
-        '<span class="folder-text" title="' + escapeHtml(drawingFolder) + '">' + escapeHtml(displayPath2) + '</span>';
-      if (clearBtn) clearBtn.style.display = 'block';
-    } else {
-      statusEl.innerHTML =
-        '<span class="folder-dot off"></span>' +
-        '<span class="folder-text">Kein Ordner verbunden</span>';
-      if (clearBtn) clearBtn.style.display = 'none';
-    }
-  }
+  $('zuletzt').hidden = !Z.verlauf.length;
+  $('zuletzt').innerHTML = Z.verlauf.map(function (v) { return '<button data-d="' + v[0] + '" data-p="' + v[1] + '">' + gewindeName(v[0], v[1]) + '</button>'; }).join('');
+  var f = Z.fehler ? '<div class="hinweis warn">' + Z.fehler + '</div>' : '';
+  if (!r) { $('folge').innerHTML = f || '<div class="leer" style="padding:8px 2px">Nenn-Ø mit + und − wählen oder die Zahl antippen.</div>'; return; }
+  var w = warnText();
+  $('folge').innerHTML = f + (w ? '<div class="hinweis warn">' + w + '</div>' : '') +
+    '<h2>' + (innen ? 'Mutter · Innengewinde' : 'Bolzen · Außengewinde') + '<span>Arbeitsfolge</span></h2>' +
+    ziele(r, Z.seite).map(function (z, i) {
+      return '<div class="schritt"><div class="nr">' + (i + 1) + '</div><div class="verb">' + z.verb + '<span class="chip teal">' + z.sym + '</span></div>' +
+        '<div class="wert">' + z.wert + '<small>' + (z.einheit || z.marke) + '</small></div><div class="zeile">' + z.zeile + '</div></div>';
+    }).join('') + '<button class="mehr" id="mehr">Alle Maße ' + (innen ? 'der Mutter' : 'des Bolzens') + '</button>';
+}
+function zeichneLade(r) {
+  if (!r) { $('lade').hidden = true; return; }
+  var innen = Z.seite === 'innen', n = gewindeName(Z.g.d, Z.g.p);
+  $('lade-inhalt').innerHTML = '<div class="griff"></div>' +
+    (innen ? karte('Alle Maße · Mutter ' + n, 'mm', tabelleMutter(r), 'amtec: 7H auf 2/3 verkleinert · Flanken-Ø nicht messbar')
+           : karte('Alle Maße · Bolzen ' + n, 'mm', tabelleBolzen(r), 'Flanken-Ø nicht messbar')) +
+    karte('Grundprofil', 'mm', tabelleProfil(r));
 }
 
-function checkDrawingAvailability(d, p) {
-  // Existierende Karte entfernen
-  var existing = document.getElementById('drawing-card');
-  if (existing) existing.remove();
+// ── Breit: Suchfeld ──
+var feld = $('feld'), treffer = $('treffer');
+function vorschlaege(text) {
+  var t = text.trim().toLowerCase().replace(/^m\s*/, '');
+  if (!t) return [];
+  var anfang = t.split(/[x×*]/)[0].trim().replace(',', '.'), liste = [], frei = lesen(text);
+  DIN13_NORM.forEach(function (n) { if (String(n[0]).indexOf(anfang) === 0) liste.push({ d: n[0], p: n[1], art: 'Regelgewinde' }); });
+  if (frei && frei.fehler) return [{ rat: frei.fehler }].concat(liste).slice(0, 6);
+  if (frei && regelsteigung(frei.d) !== frei.p) liste.unshift({ d: frei.d, p: frei.p, art: 'eigene Steigung' });
+  else if (frei) liste.sort(function (a, b) { return (b.d === frei.d) - (a.d === frei.d); });
+  if (!liste.length) liste.push({ rat: 'Kein Gewinde erkannt. Beispiele: 24 · M24 · 24x2 · 68x4' });
+  return liste.slice(0, 6);
+}
+function zeigeTreffer() {
+  var v = vorschlaege(feld.value), waehlbar = v.filter(function (x) { return !x.rat; });
+  treffer.hidden = !v.length;
+  Z.wahl = Math.max(0, Math.min(Z.wahl, waehlbar.length - 1));
+  var i = -1;
+  treffer.innerHTML = v.map(function (x) {
+    if (x.rat) return '<div class="rat">' + escapeHtml(x.rat) + '</div>';
+    i++;
+    return '<div class="' + (i === Z.wahl ? 'an' : '') + '" data-d="' + x.d + '" data-p="' + x.p + '"><span class="mono">' + gewindeName(x.d, x.p) + '</span><small>' + x.art + '</small></div>';
+  }).join('');
+  return waehlbar;
+}
+function ausFeld(d, p) { feld.value = ''; treffer.hidden = true; feld.blur(); waehle(d, p, true); }
+feld.addEventListener('input', function () { Z.wahl = 0; zeigeTreffer(); });
+feld.addEventListener('focus', function () { if (feld.value) zeigeTreffer(); });
+feld.addEventListener('blur', function () { setTimeout(function () { treffer.hidden = true; }, 120); });
+feld.addEventListener('keydown', function (e) {
+  var v = zeigeTreffer();
+  if (e.key === 'ArrowDown') { Z.wahl = Math.min(Z.wahl + 1, v.length - 1); zeigeTreffer(); e.preventDefault(); }
+  else if (e.key === 'ArrowUp') { Z.wahl = Math.max(Z.wahl - 1, 0); zeigeTreffer(); e.preventDefault(); }
+  else if (e.key === 'Enter' && v[Z.wahl]) ausFeld(v[Z.wahl].d, v[Z.wahl].p);
+  else if (e.key === 'Escape') { feld.value = ''; treffer.hidden = true; feld.blur(); }
+});
+treffer.addEventListener('mousedown', function (e) {
+  var z = e.target.closest('div[data-d]'); if (z) { e.preventDefault(); ausFeld(+z.dataset.d, +z.dataset.p); }
+});
+document.addEventListener('keydown', function (e) {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { feld.focus(); feld.select(); e.preventDefault(); }
+  if (e.key === 'Escape') $('lade').hidden = true;
+});
+if (/Mac|iPhone|iPad/.test(navigator.platform || '')) $('kuerzel').textContent = '⌘ K';
 
-  if (!drawingFolder || !isTauri()) return;
-
-  window.__TAURI__.invoke('find_drawing', {
-    folder: drawingFolder,
-    d: d,
-    p: p
-  }).then(function(result) {
-    showDrawingCard(result, d, p);
-  }).catch(function(err) {
-    console.error('Drawing lookup error:', err);
+// ── Schmal: Wähler ──
+var STEIGUNGEN = Object.keys(BOLT_D1).map(Number).sort(function (a, b) { return a - b; });
+var DURCHMESSER = DIN13_NORM.map(function (n) { return n[0]; });
+function naechster(liste, wert, richtung) {
+  var i;
+  if (richtung > 0) { for (i = 0; i < liste.length; i++) if (liste[i] > wert + 1e-9) return liste[i]; return liste[liste.length - 1]; }
+  for (i = liste.length - 1; i >= 0; i--) if (liste[i] < wert - 1e-9) return liste[i];
+  return liste[0];
+}
+document.querySelectorAll('.dreh').forEach(function (el) {
+  el.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (!Z.g) return waehle(24, 3);
+    var d = Z.g.d, p = Z.g.p;
+    if (el.dataset.was === 'd') { d = naechster(DURCHMESSER, d, +b.dataset.r); p = regelsteigung(d); }   /* neuer Durchmesser → seine Regelsteigung */
+    else p = naechster(STEIGUNGEN, p, +b.dataset.r);
+    var g = pruefen(d, p);
+    if (g.fehler) { Z.fehler = g.fehler; zeichne(); } else waehle(d, p);
   });
+});
+function ausWaehler(e) {
+  var d = parseFloat($('in-d').value), p = parseFloat($('in-p').value);
+  if (e.target === $('in-d') && regelsteigung(d)) { p = regelsteigung(d); $('in-p').value = p; }
+  if (!(d > 0) || !(p > 0)) return;
+  var g = pruefen(d, p);
+  if (g.fehler) { Z.fehler = g.fehler; zeichne(); } else waehle(d, p, true);
 }
+$('in-d').addEventListener('change', ausWaehler);
+$('in-p').addEventListener('change', ausWaehler);
+['in-d', 'in-p'].forEach(function (id) {
+  $(id).addEventListener('focus', function () { this.select(); });
+  $(id).addEventListener('keydown', function (e) { if (e.key === 'Enter') this.blur(); });
+});
 
-function showDrawingCard(result, d, p) {
-  var resultArea = document.getElementById('result-area');
-  if (!resultArea || !resultArea.firstChild) return;
-
-  var card = document.createElement('div');
-  card.id = 'drawing-card';
-
-  if (result.found) {
-    card.className = 'drawing-card found';
-    card.innerHTML =
-      '<div class="drawing-icon found">📄</div>' +
-      '<div class="drawing-info">' +
-        '<div class="drawing-title found">✓ Zeichnung verfügbar</div>' +
-        '<div class="drawing-filename">' + escapeHtml(result.filename) + '</div>' +
-      '</div>' +
-      '<button class="btn-drawing-open" onclick="openDrawing(\'' + escapeAttr(result.path) + '\')">Zeichnung öffnen</button>';
-  } else {
-    card.className = 'drawing-card notfound';
-    card.innerHTML =
-      '<div class="drawing-icon">○</div>' +
-      '<div class="drawing-info">' +
-        '<div class="drawing-title notfound">Keine Zeichnung gefunden</div>' +
-        '<div class="drawing-filename muted">Gesucht: M' + d + '×' + p + ' im Archiv</div>' +
-      '</div>';
-  }
-
-  // Direkt nach der thread-badge einfügen (oben im Ergebnisbereich)
-  var badge = resultArea.querySelector('.thread-badge');
-  if (badge && badge.nextSibling) {
-    resultArea.insertBefore(card, badge.nextSibling);
-  } else {
-    resultArea.insertBefore(card, resultArea.firstChild);
-  }
-}
-
-function openDrawing(path) {
-  if (!isTauri()) return;
-  window.__TAURI__.invoke('open_drawing', { path: path }).catch(function(err) {
-    alert('Fehler beim Öffnen der Zeichnung:\n' + err);
-  });
-}
-
-function escapeHtml(str) {
-  if (!str) return '';
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-function escapeAttr(str) {
-  if (!str) return '';
-  return str.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-}
-
-// ═══════════════════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', function() {
-  fillDropdown();
-  loadSavedFolder();
-  // Aktuelles Jahr in Footer eintragen
-  var yearEl = document.getElementById('footer-year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-  // Intro beim ersten Start zeigen (oder via Button)
-  try {
-    if (!localStorage.getItem('amtec_intro_seen')) {
-      showIntro();
-    }
-  } catch(e) {}
-  // Keyboard shortcut: Enter → berechnen
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      closeIntro();
-    }
-    if (e.key === 'Enter' && (e.target.id === 'inp-d' || e.target.id === 'inp-p')) {
-      berechnen();
-    }
-  });
+// ── Gemeinsame Klicks ──
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('button'); if (!b) return;
+  var schalter = b.parentNode.dataset && b.parentNode.dataset.schalter;
+  if (schalter) { Z[schalter] = b.dataset.w; speichern(); zeichne(); }
+  else if (b.dataset.d && !b.closest('.treffer')) waehle(+b.dataset.d, +b.dataset.p, true);
+  else if (b.id === 'mehr') $('lade').hidden = false;
+});
+$('lade').addEventListener('click', function (e) { if (e.target === $('lade')) $('lade').hidden = true; });
+$('thema').addEventListener('click', function () {
+  var dunkel = document.body.classList.toggle('dunkel');
+  try { localStorage.setItem('amtec_theme', dunkel ? 'dark' : 'light'); } catch (e) {}
+});
+$('hilfe-auf').addEventListener('click', function () { $('hilfe').showModal(); });
+$('hilfe-zu').addEventListener('click', function () { $('hilfe').close(); });
+$('hilfe').addEventListener('click', function (e) { if (e.target === $('hilfe')) $('hilfe').close(); });
+$('drucken').addEventListener('click', function () {
+  /* In der Desktop-App den Druckbefehl des Fensters nehmen, sonst den des Browsers */
+  if (istTauri()) window.__TAURI__.invoke('print_window').catch(function () { window.print(); });
+  else window.print();
 });
 
 // ═══════════════════════════════════════════════════════════
-//  INTRO-FENSTER
+//  ZEICHNUNGS-ARCHIV (nur Desktop-App)
 // ═══════════════════════════════════════════════════════════
-function showIntro() {
-  var modal = document.getElementById('intro-modal');
-  if (modal) modal.classList.add('open');
+var drawingFolder = null;
+function istTauri() { return typeof window.__TAURI__ !== 'undefined'; }
+function archivZeigen() {
+  var el = $('archiv');
+  el.hidden = !istTauri();
+  $('hilfe-archiv').hidden = !istTauri();
+  el.classList.toggle('an', !!drawingFolder);
+  el.title = drawingFolder || 'Ordner mit den PDF-Zeichnungen wählen';
+  el.lastElementChild.textContent = drawingFolder ? 'Archiv: ' + drawingFolder.replace(/[\\/]+$/, '').split(/[\\/]/).pop() : 'Archiv wählen';
+  $('archiv-trennen').hidden = !drawingFolder;
 }
-function closeIntro() {
-  var modal = document.getElementById('intro-modal');
-  if (modal) modal.classList.remove('open');
-  try { localStorage.setItem('amtec_intro_seen', '1'); } catch(e){}
+function archivLaden() {
+  try { drawingFolder = localStorage.getItem('amtec_drawing_folder') || null; } catch (e) {}
+  archivZeigen();
+  if (drawingFolder && istTauri()) {
+    window.__TAURI__.invoke('validate_folder', { path: drawingFolder }).then(function (gueltig) {
+      if (!gueltig) archivTrennen(); else zeichnungSuchen();
+    });
+  }
 }
+function archivWaehlen() {
+  if (!istTauri()) return;
+  window.__TAURI__.dialog.open({ directory: true, multiple: false, title: 'Zeichnungs-Ordner wählen' }).then(function (ordner) {
+    if (ordner && typeof ordner === 'string') {
+      drawingFolder = ordner;
+      try { localStorage.setItem('amtec_drawing_folder', ordner); } catch (e) {}
+      archivZeigen(); zeichnungSuchen();
+    }
+  }).catch(function (err) { console.error('Ordnerwahl:', err); });
+}
+function archivTrennen() {
+  drawingFolder = null; Z.zeichnung = null;
+  try { localStorage.removeItem('amtec_drawing_folder'); } catch (e) {}
+  archivZeigen(); zeichnungZeigen();
+}
+function zeichnungSuchen() {
+  if (!drawingFolder || !istTauri() || !Z.g) return;
+  var d = Z.g.d, p = Z.g.p;
+  window.__TAURI__.invoke('find_drawing', { folder: drawingFolder, d: d, p: p }).then(function (erg) {
+    if (!Z.g || Z.g.d !== d || Z.g.p !== p) return;   /* inzwischen ein anderes Gewinde gewählt */
+    Z.zeichnung = erg; zeichnungZeigen();
+  }).catch(function (err) { console.error('Zeichnungssuche:', err); });
+}
+function zeichnungKarte() {
+  if (!istTauri() || !Z.g) return '';
+  var inhalt;
+  if (!drawingFolder) inhalt = '<span class="leise">Kein Archiv verbunden</span><button class="knopf" id="archiv-jetzt">Ordner wählen</button>';
+  else if (!Z.zeichnung) inhalt = '<span class="leise">Suche im Archiv …</span>';
+  else if (Z.zeichnung.found) inhalt = '<span class="mono">' + escapeHtml(Z.zeichnung.filename) + '</span><button class="knopf rot" id="zeichnung-auf">Öffnen</button>';
+  else inhalt = '<span class="leise">Keine Zeichnung zu ' + gewindeName(Z.g.d, Z.g.p) + ' gefunden</span>';
+  return '<section class="karte zeichnung-karte"><header><b>Zeichnung</b><span>' + (drawingFolder ? 'aus dem Archiv' : '') + '</span></header><div class="zeichnung">' + inhalt + '</div></section>';
+}
+function zeichnungZeigen() { var el = $('zeichnung-platz'); if (el) el.innerHTML = zeichnungKarte(); }
+$('archiv').addEventListener('click', archivWaehlen);
+$('archiv-trennen').addEventListener('click', archivTrennen);
+$('breit').addEventListener('click', function (e) {
+  if (e.target.id === 'archiv-jetzt') archivWaehlen();
+  if (e.target.id === 'zeichnung-auf' && Z.zeichnung && Z.zeichnung.path) {
+    window.__TAURI__.invoke('open_drawing', { path: Z.zeichnung.path }).catch(function (err) { alert('Fehler beim Öffnen der Zeichnung:\n' + err); });
+  }
+});
+
+// ── Start ──
+laden();
+$('jahr').textContent = new Date().getFullYear();
+zeichne();
+archivLaden();
 </script>
 <script>
-if ('serviceWorker' in navigator) {
+/* Offline-Betrieb der Web-App. In der Desktop-App gibt es keinen Service Worker. */
+if ('serviceWorker' in navigator && typeof window.__TAURI__ === 'undefined' && location.protocol !== 'file:') {
   window.addEventListener('load', function () {
     navigator.serviceWorker.register('sw.js').catch(function () {});
   });
